@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+const base = import.meta.env.BASE_URL;
+
+>>>>>>> origin/main
 export function Home() {
   return (
     <section class="page-pad flex flex-1 flex-col py-4">
