@@ -3,10 +3,8 @@ import { defineConfig } from "vite";
 import preact from "@preact/preset-vite";
 import tailwindcss from "@tailwindcss/vite";
 
-// GitHub Pages sets VITE_BASE to /DV2026-GrizzlyBears/ at build time.
 const base = process.env.VITE_BASE || "/";
 
-/** Short HEAD hash, also available to Nix/CI builds via VITE_COMMIT. */
 function gitCommit() {
   if (process.env.VITE_COMMIT) return process.env.VITE_COMMIT.trim();
 

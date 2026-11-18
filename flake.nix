@@ -1,5 +1,5 @@
 {
-  description = "Mapping the Impact of AI through Data - GrizzlyBears";
+  description = "AI: an industry of bottlenecks - GrizzlyBears";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
