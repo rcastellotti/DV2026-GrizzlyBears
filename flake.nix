@@ -24,7 +24,20 @@
           default = pkgs.mkShell {
             packages = [
               pkgs.bun
+              pkgs.typst
+              pkgs.cm_unicode
+              pkgs.marimo
+              pkgs.python3
+              pkgs.python3Packages.numpy
+              pkgs.python3Packages.pandas
+              pkgs.python3Packages.matplotlib
+              pkgs.python3Packages.jupyter
+              pkgs.python3Packages.seaborn
             ];
+            TYPST_FONT_PATHS = "${pkgs.cm_unicode}/share/fonts";
+            shellHook = ''
+              echo "yoooo grizzly fkn bears!!!  ʕ•ᴥ•ʔ"
+            '';
           };
         }
       );
