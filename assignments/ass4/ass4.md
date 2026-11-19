@@ -19,9 +19,9 @@ Supporting questions:
 
 1. Where are new data centers being built, how large are they, and how quickly are they coming online?
 2. Are we capable of producing the energy power-hungry datacenters need?
-        1. What is the impact on the power grids?
-        2. Can we source fossil fuels?
-        3. What about Nuclear Power Plants?
+   1. What is the impact on the power grids?
+   2. Can we source fossil fuels?
+   3. What about Nuclear Power Plants?
 3. How much are the hyperscalers and other cloud providers investing in AI and AI infrastructure?
 4. Which countries and companies control each step of the supply chain, from mining minerals and resources to chipmaking equipment and design?
 5. What is the impact of AI on consumer prices?
