@@ -23,8 +23,6 @@ export function AssignmentOne() {
             valuePrefix="$"
             valueSuffix="B"
             highlightAfter="2023Q1"
-            beforeColor={"#31577f"}
-            afterColor={"#438b84"}
           />
         </div>
       </div>
