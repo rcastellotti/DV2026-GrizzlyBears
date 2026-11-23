@@ -1,5 +1,5 @@
-import quarterlyCapex from "../data/quarterly-capex.json";
 import { CapexBarchart } from "../components/CapexBarchart";
+import { WaffleLitography } from "../components/WaffleLitography";
 
 export function AssignmentOne() {
   return (
@@ -17,13 +17,15 @@ export function AssignmentOne() {
             description="Combined quarterly capital expenditure, 2016–2026 (USD billions)."
             takeaway="Quarterly cash spending accelerated after 2023."
             source="SEC EDGAR Company Facts and Amazon’s 2017 Q2 10-Q"
-            data={quarterlyCapex}
             categoryKey="quarter"
             valueKey="totalUsdBillions"
             valuePrefix="$"
             valueSuffix="B"
             highlightAfter="2023Q1"
           />
+        </div>
+        <div class="col-span-12 min-h-128 lg:col-span-6">
+          <WaffleLitography />
         </div>
       </div>
       <nav class="mt-8 flex justify-start border-t border-ink/25 pt-4 text-base font-semibold text-[var(--notebook-blue)]" aria-label="Notebook pages">
