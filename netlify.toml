@@ -1,0 +1,13 @@
+# Netlify builds production from `main` and a Deploy Preview for every
+# pull request opened against it. Each preview gets its own URL
+# (https://deploy-preview-<PR number>--dv2026-grizzlybears.netlify.app),
+# posted back to the pull request as a status check and comment.
+
+[build]
+  command = "bun run build"
+  publish = "dist"
+
+# Previews are served from the domain root, so keep Vite's base at "/"
+# (the GitHub Pages workflows set their own sub-path base).
+[context.deploy-preview.environment]
+  VITE_BASE = "/"
