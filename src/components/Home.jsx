@@ -24,7 +24,7 @@ export function Home() {
         </p>
 
         <div class="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-          <a class="notebook-open" href="/assignment1/">
+          <a class="inline-block rounded bg-[#233d61] px-[18px] py-2.5 text-base font-semibold text-white transition-colors hover:bg-[#172c48] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#233d61]" href="/assignment1/">
             Open the notebook
           </a>
           <p class="text-sm text-ink-faint">

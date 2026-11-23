@@ -10,7 +10,7 @@ function NotFound() {
   return (
     <section class="page-pad flex flex-1 flex-col items-center justify-center py-16 text-center">
       <h1 class="home-title text-3xl font-bold text-ink">Page not found</h1>
-      <a class="notebook-open mt-6" href="/">Back to home</a>
+      <a class="mt-6 inline-block rounded bg-[#233d61] px-[18px] py-2.5 text-base font-semibold text-white transition-colors hover:bg-[#172c48] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#233d61]" href="/">Back to home</a>
     </section>
   );
 }
