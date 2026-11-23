@@ -56,6 +56,55 @@
 .home-title { font-family: "Roboto Slab", Georgia, serif; }
 .notebook-footer { background-color: var(--color-paper); }
 
+.notebook {
+  --notebook-blue: #233d61;
+}
+.notebook-open {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 4px;
+  background: var(--notebook-blue);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.notebook-open:hover { background: #172c48; }
+.notebook-open:focus-visible,
+.notebook-pagination a:focus-visible { outline: 2px solid var(--notebook-blue); outline-offset: 4px; }
+.notebook-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding-bottom: 28px;
+  color: var(--notebook-blue);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.notebook-pagination a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.visualization-grid { display: grid; gap: 20px; }
+.visualization-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #c5ccd5;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 2px 4px #233d610b;
+}
+.visualization-plot { flex: 1; }
+.visualization-takeaway {
+  border-top: 1px solid #dbe2eb;
+  background: #f0f4f8;
+  color: var(--notebook-blue);
+}
+
+@media (min-width: 800px) {
+  .visualization-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .visualization-card:first-child { grid-column: 1 / -1; }
+}
+
 @media (max-width: 1120px) {
   .page-pad { padding-left: 94px; padding-right: 46px; }
 }
