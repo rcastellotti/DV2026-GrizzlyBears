@@ -1,4 +1,6 @@
 import { CapexBarchart } from "../components/CapexBarchart";
+import { ElectricityGenerationMix } from "../components/ElectricityGenerationMix";
+import { ElectricityGenerationTotals } from "../components/ElectricityGenerationTotals";
 import { WaffleLitography } from "../components/WaffleLitography";
 
 export function AssignmentOne() {
@@ -26,6 +28,12 @@ export function AssignmentOne() {
         </div>
         <div class="col-span-12 min-h-128 lg:col-span-6">
           <WaffleLitography />
+        </div>
+        <div class="col-span-12">
+          <ElectricityGenerationMix />
+        </div>
+        <div class="col-span-12">
+          <ElectricityGenerationTotals />
         </div>
       </div>
       <nav class="mt-8 flex justify-start border-t border-ink/25 pt-4 text-base font-semibold text-[var(--notebook-blue)]" aria-label="Notebook pages">
