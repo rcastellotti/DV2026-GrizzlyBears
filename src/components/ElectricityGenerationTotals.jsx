@@ -70,7 +70,7 @@ export function ElectricityGenerationTotals() {
           ))}
         </figcaption>
       </figure>
-      <DataSource>
+      <DataSource note="Ember compiles data from multi-country datasets (EIA, Eurostat, Energy Institute, UN) and national sources such as China’s National Bureau of Statistics.">
         <a href="https://ember-energy.org/data/yearly-electricity-data/">
           Ember – Yearly Electricity Data (2026)
         </a>
