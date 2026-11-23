@@ -69,19 +69,7 @@
   font-weight: 600;
 }
 .notebook-open:hover { background: #172c48; }
-.notebook-open:focus-visible,
-.notebook-pagination a:focus-visible { outline: 2px solid var(--notebook-blue); outline-offset: 4px; }
-.notebook-pagination {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 12px 24px;
-  padding-bottom: 28px;
-  color: var(--notebook-blue);
-  font-size: 1rem;
-  font-weight: 600;
-}
-.notebook-pagination a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.notebook-open:focus-visible { outline: 2px solid var(--notebook-blue); outline-offset: 4px; }
 @media (max-width: 1120px) {
   .page-pad { padding-left: 94px; padding-right: 46px; }
 }
