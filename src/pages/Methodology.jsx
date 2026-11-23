@@ -8,6 +8,9 @@ export function Methodology() {
       </div>
       <div class="space-y-5 text-base leading-relaxed text-ink-soft sm:text-lg">
         <p>
+          Here we will describe our research methodology, highlighting how data is massaged/extracted.
+        </p>
+        <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
         </p>
         <p>
