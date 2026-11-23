@@ -1,9 +1,6 @@
 import quarterlyCapex from "../data/quarterly-capex.json";
 import { CapexBarchart } from "../components/CapexBarchart";
 
-const navy = "#31577f";
-const teal = "#438b84";
-
 export function AssignmentOne() {
   return (
     <section aria-labelledby="assignment-1-title" class="page-pad pt-10 pb-12 sm:pt-14 sm:pb-16">
@@ -26,8 +23,8 @@ export function AssignmentOne() {
             valuePrefix="$"
             valueSuffix="B"
             highlightAfter="2023Q1"
-            beforeColor={navy}
-            afterColor={teal}
+            beforeColor={"#31577f"}
+            afterColor={"#438b84"}
           />
         </div>
       </div>
