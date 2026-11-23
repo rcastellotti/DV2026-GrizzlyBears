@@ -1,0 +1,109 @@
+name: Publish Pages PR preview
+
+on:
+  workflow_run:
+    workflows: [Build Pages PR preview]
+    types: [completed]
+  pull_request_target:
+    branches: [main]
+    types: [closed]
+
+permissions:
+  actions: write
+  contents: write
+  pull-requests: read
+
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: pages-preview-storage
+  queue: max
+
+jobs:
+  publish:
+    if: >-
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.event == 'pull_request' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_repository.full_name == github.repository) ||
+      (github.event_name == 'pull_request_target' &&
+       github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-24.04
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Identify the current pull request
+        id: pr
+        env:
+          CLOSED_PR: ${{ github.event.pull_request.number }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          REPO_OWNER: ${{ github.repository_owner }}
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == pull_request_target ]]; then
+            state=$(gh api "repos/$GH_REPO/pulls/$CLOSED_PR" --jq .state)
+            if [[ "$state" != closed ]]; then exit 0; fi
+            number=$CLOSED_PR
+          else
+            pulls=$(gh api --method GET "repos/$GH_REPO/pulls" \
+              -f state=open -f base=main -f "head=$REPO_OWNER:$HEAD_BRANCH")
+            number=$(jq -r --arg sha "$HEAD_SHA" --arg repo "$GH_REPO" \
+              '.[] | select(.head.sha == $sha and .head.repo.full_name == $repo) | .number' \
+              <<< "$pulls")
+            if [[ -z "$number" ]]; then exit 0; fi
+          fi
+          [[ "$number" =~ ^[0-9]+$ ]]
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+
+      - name: Download the built site
+        if: steps.pr.outputs.number && github.event_name == 'workflow_run'
+        env:
+          BUILD_RUN: ${{ github.event.workflow_run.id }}
+          BUILD_ATTEMPT: ${{ github.event.workflow_run.run_attempt }}
+        run: |
+          gh run download "$BUILD_RUN" --name "pages-preview-$BUILD_ATTEMPT" \
+            --dir "$RUNNER_TEMP/preview"
+          test -f "$RUNNER_TEMP/preview/index.html"
+
+      - name: Update stored previews and request a Pages deployment
+        if: steps.pr.outputs.number
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+        run: |
+          gh auth setup-git
+          mkdir "$RUNNER_TEMP/pages-previews"
+          cd "$RUNNER_TEMP/pages-previews"
+          git init --initial-branch=pages-previews
+          git remote add origin "$GITHUB_SERVER_URL/$GH_REPO.git"
+          if git ls-remote --exit-code origin refs/heads/pages-previews; then
+            git fetch --no-tags --depth=1 origin refs/heads/pages-previews
+            git switch --detach FETCH_HEAD
+          else
+            status=$?
+            if [[ "$status" != 2 ]]; then exit "$status"; fi
+            if [[ "$GITHUB_EVENT_NAME" == pull_request_target ]]; then exit 0; fi
+          fi
+
+          path="pr-preview/pr-$PR_NUMBER"
+          rm -rf -- "$path"
+          if [[ "$GITHUB_EVENT_NAME" == workflow_run ]]; then
+            mkdir -p pr-preview
+            mv "$RUNNER_TEMP/preview" "$path"
+          fi
+          mkdir -p pr-preview
+          touch pr-preview/.gitkeep
+          git add -f -- pr-preview
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit -m "Update Pages preview for PR #$PR_NUMBER"
+            git push origin HEAD:refs/heads/pages-previews
+          fi
+          gh workflow run deploy-pages.yml --ref main
+          if [[ "$GITHUB_EVENT_NAME" == workflow_run ]]; then
+            printf 'Preview after Pages deploys: [%s](https://%s.github.io/%s/%s/)\n' \
+              "PR #$PR_NUMBER" "${GH_REPO%/*}" "${GH_REPO#*/}" "$path" >> "$GITHUB_STEP_SUMMARY"
+          fi
