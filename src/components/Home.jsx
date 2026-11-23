@@ -23,15 +23,17 @@ export function Home() {
           With this project, we want to explore what makes AI possible and what might hold it back. Through data and visualizations, we aim to uncover the bottlenecks behind the AI boom and give our audience the tools to better understand it and form their own opinions.
         </p>
 
-        <a class="notebook-open mt-8" href="/assignment1/">
-          Open the notebook
-        </a>
-        <p class="mt-3 text-sm text-ink-faint">
-          or{" "}
-          <a class="text-[#002677] underline underline-offset-2 hover:no-underline" href="/methodology/">
-            check the methodology page
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+          <a class="notebook-open" href="/assignment1/">
+            Open the notebook
           </a>
-        </p>
+          <p class="text-sm text-ink-faint">
+            or{" "}
+            <a class="text-[#002677] underline underline-offset-2 hover:no-underline" href="/methodology/">
+              check the methodology page
+            </a>
+          </p>
+        </div>
       </div>
     </section>
   );
