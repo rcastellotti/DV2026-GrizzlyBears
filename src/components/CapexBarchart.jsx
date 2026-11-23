@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "preact/hooks";
 import { axisBottom, axisLeft, max, scaleBand, scaleLinear, select } from "d3";
+import quarterlyCapex from "../data/quarterly-capex.json";
 
 export function CapexBarchart({
   title,
   description,
   takeaway,
   source,
-  data,
   categoryKey,
   valueKey,
   valuePrefix = "",
@@ -40,8 +40,8 @@ export function CapexBarchart({
     const right = 8;
     const top = 18;
     const baseline = height - 30;
-    const reported = data.filter((datum) => datum[valueKey] != null);
-    const categories = data.map((datum) => datum[categoryKey]);
+    const reported = quarterlyCapex.filter((datum) => datum[valueKey] != null);
+    const categories = quarterlyCapex.map((datum) => datum[categoryKey]);
     const x = scaleBand(categories, [left, width - right]).padding(0.22);
     const y = scaleLinear(
       [0, max(reported, (datum) => datum[valueKey]) ?? 1],
@@ -66,7 +66,7 @@ export function CapexBarchart({
       .text((datum) => `${datum[categoryKey]} · ${valuePrefix}${datum[valueKey].toFixed(1)}${valueSuffix}`);
 
     return () => svg.selectAll("*").remove();
-  }, [data, categoryKey, valueKey, valuePrefix, valueSuffix, highlightAfter, beforeColor, afterColor, size]);
+  }, [categoryKey, valueKey, valuePrefix, valueSuffix, highlightAfter, beforeColor, afterColor, size]);
 
   return (
     <article class="flex h-full min-w-0 flex-col overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b]">
