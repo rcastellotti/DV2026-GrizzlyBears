@@ -14,6 +14,8 @@
 }
 
 @layer base {
+  html { font-size: 95%; }
+
   body {
     min-width: 300px;
     margin: 0;
@@ -23,7 +25,7 @@
       radial-gradient(circle at 16% 10%, rgba(255, 252, 244, 0.35), transparent 34%),
       linear-gradient(118deg, #dcd5c8 0%, #d2cabc 52%, #d8d1c4 100%);
     font-family: var(--font-note);
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 1.4;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -82,29 +84,6 @@
   font-weight: 600;
 }
 .notebook-pagination a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.visualization-grid { display: grid; gap: 20px; }
-.visualization-card {
-  display: flex;
-  min-width: 0;
-  flex-direction: column;
-  overflow: hidden;
-  border: 1px solid #c5ccd5;
-  border-radius: 5px;
-  background: white;
-  box-shadow: 0 2px 4px #233d610b;
-}
-.visualization-plot { flex: 1; }
-.visualization-takeaway {
-  border-top: 1px solid #dbe2eb;
-  background: #f0f4f8;
-  color: var(--notebook-blue);
-}
-
-@media (min-width: 800px) {
-  .visualization-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-  .visualization-card:first-child { grid-column: 1 / -1; }
-}
-
 @media (max-width: 1120px) {
   .page-pad { padding-left: 94px; padding-right: 46px; }
 }

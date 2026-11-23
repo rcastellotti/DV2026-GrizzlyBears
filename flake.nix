@@ -28,6 +28,7 @@
               pkgs.cm_unicode
               pkgs.marimo
               pkgs.python3
+              pkgs.python3Packages.jupyter
               pkgs.python3Packages.numpy
               pkgs.python3Packages.pandas
               pkgs.python3Packages.matplotlib
