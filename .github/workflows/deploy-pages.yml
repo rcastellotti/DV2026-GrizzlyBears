@@ -3,52 +3,123 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request_target:
+    branches: [main]
+    types: [opened, reopened, synchronize, closed]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
-# Allow one concurrent deployment, cancelling in-progress runs for the same ref.
 concurrency:
-  group: pages-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository && format('pages-fork-{0}', github.run_id) || 'pages' }}
+  cancel-in-progress: false
 
 jobs:
-  build:
+  plan:
+    if: github.ref == 'refs/heads/main' && (github.event_name != 'pull_request_target' || github.event.pull_request.head.repo.full_name == github.repository)
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      sites: ${{ steps.sites.outputs.matrix }}
     steps:
-      - name: Checkout
+      - name: List sites to publish
+        id: sites
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh api --paginate --slurp "repos/$REPO/pulls?state=open&base=main&per_page=100" > "$RUNNER_TEMP/open-pulls.json"
+          main_sha="$(gh api "repos/$REPO/commits/main" --jq .sha)"
+          matrix="$(jq -c --arg repo "$REPO" --arg main "$main_sha" '
+            [{name: "production", sha: $main, path: ""}] +
+            [.[][] | select(.head.repo.full_name == $repo) |
+              {name: "pr-\(.number)", sha: .head.sha, path: "previews/pr-\(.number)/"}]
+          ' "$RUNNER_TEMP/open-pulls.json")"
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: plan
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        site: ${{ fromJSON(needs.plan.outputs.sites) }}
+    steps:
+      - name: Checkout site revision
         uses: actions/checkout@v7
+        with:
+          ref: ${{ matrix.site.sha }}
+          persist-credentials: false
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v6
-
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
       - name: Build
         env:
-          VITE_BASE: /${{ github.event.repository.name }}/
+          VITE_BASE: /${{ github.event.repository.name }}/${{ matrix.site.path }}
           VITE_REPO_URL: ${{ github.server_url }}/${{ github.repository }}
         run: |
           export VITE_COMMIT="$(git rev-parse --short HEAD)"
           bun run build
 
-      - name: Upload artifact
+      - name: Upload site build
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-${{ matrix.site.name }}
+          path: dist
+          if-no-files-found: error
+          retention-days: 1
+
+  publish:
+    needs: [plan, build]
+    # Publish successful builds even if an individual preview failed.
+    if: ${{ !cancelled() && needs.plan.result == 'success' }}
+    runs-on: ubuntu-24.04
+    outputs:
+      previews: ${{ steps.assemble.outputs.previews }}
+    steps:
+      - name: Download site builds
+        uses: actions/download-artifact@v4
+        with:
+          pattern: site-*
+          path: builds
+
+      - name: Assemble Pages site
+        id: assemble
+        run: |
+          test -f builds/site-production/index.html
+          mv builds/site-production dist
+          previews=()
+          for preview in builds/site-pr-*; do
+            [ -d "$preview" ] || continue
+            name="${preview##*/site-}"
+            mkdir -p dist/previews
+            mv "$preview" "dist/previews/$name"
+            previews+=("${name#pr-}")
+          done
+          echo "previews=${previews[*]}" >> "$GITHUB_OUTPUT"
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
   deploy:
-    needs: build
+    needs: publish
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+      pull-requests: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -56,3 +127,27 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
+      - name: Update pull request preview links
+        if: needs.publish.outputs.previews != ''
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          PREVIEWS: ${{ needs.publish.outputs.previews }}
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          marker='<!-- github-pages-pr-preview -->'
+          for pr in $PREVIEWS; do
+            url="${PAGE_URL%/}/previews/pr-$pr/"
+            body="$(printf '%s\n[View the GitHub Pages preview](%s)' "$marker" "$url")"
+            comments="$(gh api --paginate --slurp "repos/$REPO/issues/$pr/comments?per_page=100")"
+            comment_id="$(jq -r --arg marker "$marker" '
+              [.[][] | select(.user.login == "github-actions[bot]" and (.body | startswith($marker))) | .id]
+              | first // empty
+            ' <<< "$comments")"
+            if [ -n "$comment_id" ]; then
+              gh api --silent --method PATCH "repos/$REPO/issues/comments/$comment_id" -f body="$body"
+            else
+              gh api --silent --method POST "repos/$REPO/issues/$pr/comments" -f body="$body"
+            fi
+          done

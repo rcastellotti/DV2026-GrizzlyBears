@@ -1,6 +1,0 @@
-name = "dv2026-grizzlybears"
-compatibility_date = "2026-11-23"
-previews = {}
-
-[assets]
-directory = "./dist"
