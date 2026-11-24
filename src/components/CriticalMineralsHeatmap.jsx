@@ -33,7 +33,7 @@ export function CriticalMineralsHeatmap() {
                   return (
                     <td key={key} class="rounded-xs px-1 py-1.5 text-center"
                       style={{ backgroundColor: shareColor(share), color: share >= 65 ? "white" : "#14283b" }}>
-                      <span class="block">{region}</span>
+                      <span class={region === "China" ? "block font-bold underline" : "block"}>{region}</span>
                       <strong class="tabular-nums">≈{share}%</strong>
                     </td>
                   );
