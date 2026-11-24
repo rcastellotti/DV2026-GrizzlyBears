@@ -35,8 +35,7 @@ export function ElectricityGenerationTotals() {
       .call((axis) => axis.select(".domain").remove())
       .call((axis) => axis.selectAll(".tick line").attr("stroke-opacity", 0.15));
     svg.append("g").attr("transform", `translate(0,${baseline})`)
-      .call(axisBottom(x).tickValues(years.filter((_, index) => width >= 520 || index % 2 === 0))
-        .tickSizeOuter(0));
+      .call(axisBottom(x).tickSizeOuter(0));
 
     for (const { name, color, years } of regions) {
       svg.append("g").attr("fill", color)

@@ -33,7 +33,6 @@ export function ElectricityGenerationMix() {
     const height = panelStride * regions.length;
     const x = scaleBand(years, [left, right]).padding(0.5);
     const y = scaleLinear([0, 100], [panelHeight, 0]);
-    const tickYears = years.filter((year, i) => i % (width < 520 ? 10 : 5) === 0 || i === years.length - 1);
     const shareTicks = [0, 25, 50, 75, 100];
     svg.attr("viewBox", `0 0 ${width} ${height}`).attr("height", height);
 
@@ -50,7 +49,7 @@ export function ElectricityGenerationMix() {
         .call((axis) => axis.selectAll(".tick line").attr("stroke-opacity", 0.15));
 
       panel.append("g").attr("transform", `translate(0,${panelHeight})`)
-        .call(axisBottom(x).tickValues(tickYears).tickSizeOuter(0));
+        .call(axisBottom(x).tickSizeOuter(0));
 
       const layers = panel.append("g")
         .selectAll("g").data(region.layers).join("g")
