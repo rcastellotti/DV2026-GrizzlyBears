@@ -31,7 +31,7 @@ export function ElectricityGenerationMix() {
     const right = width - 12;
     const plotWidth = right - left;
     const height = panelStride * regions.length;
-    const x = scaleBand(years, [left, right]).padding(0.16);
+    const x = scaleBand(years, [left, right]).padding(0.5);
     const y = scaleLinear([0, 100], [panelHeight, 0]);
     const tickYears = years.filter((year, i) => i % (width < 520 ? 10 : 5) === 0 || i === years.length - 1);
     const shareTicks = [0, 25, 50, 75, 100];
@@ -75,7 +75,7 @@ export function ElectricityGenerationMix() {
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
         <h3 class="home-title text-xl font-semibold">Electricity production by source</h3>
         <p class="mt-1 text-sm text-ink-soft">
-          Share of domestic electricity generation, {years[0]}–{years.at(-1)}.
+          Share of domestic electricity generation in {years.join(", ")}.
         </p>
       </header>
       <figure class="px-3 pt-3 pb-4 sm:px-5">
@@ -84,7 +84,7 @@ export function ElectricityGenerationMix() {
           class="block w-full"
           height="612"
           role="img"
-          aria-label={`Annual 100% stacked bars by electricity source for the United States, China, and the EU, ${years[0]} to ${years.at(-1)}.`}
+          aria-label={`100% stacked bars by electricity source for the United States, China, and the EU in ${years.join(", ")}.`}
         />
         <figcaption class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-ink-soft">
           {generationMix.sources.map(({ name, color }) => (

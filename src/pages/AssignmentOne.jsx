@@ -35,10 +35,10 @@ export function AssignmentOne() {
         <div class="col-span-12 lg:col-span-6">
           <CriticalMineralsHeatmap />
         </div>
-        <div class="col-span-12">
+        <div class="col-span-7">
           <ElectricityGenerationMix />
         </div>
-        <div class="col-span-12">
+        <div class="col-span-5">
           <ElectricityGenerationTotals />
         </div>
       </div>

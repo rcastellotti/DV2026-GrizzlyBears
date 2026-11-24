@@ -56,11 +56,11 @@ export function ElectricityGenerationTotals() {
     <article class="min-w-0 overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b]">
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
         <h3 class="home-title text-xl font-semibold">Total electricity production</h3>
-        <p class="mt-1 text-sm text-ink-soft">Annual domestic generation in terawatt-hours (TWh), {years[0]}–{years.at(-1)}.</p>
+        <p class="mt-1 text-sm text-ink-soft">Domestic electricity generation in terawatt-hours (TWh) in {years.join(", ")}.</p>
       </header>
       <figure class="px-3 pt-3 pb-4 sm:px-5">
         <svg ref={plot} class="block w-full" height="330" role="img"
-          aria-label="Grouped annual electricity generation bars for the United States, China, and the European Union." />
+          aria-label={`Grouped electricity generation bars for the United States, China, and the European Union in ${years.join(", ")}.`} />
         <figcaption class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-ink-soft">
           {regions.map(({ name, color }) => (
             <span key={name} class="inline-flex items-center gap-1.5">
