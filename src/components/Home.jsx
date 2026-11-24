@@ -29,6 +29,12 @@ export function Home() {
           <a class="inline-block rounded bg-[#233d61] px-[18px] py-2.5 text-base font-semibold text-white transition-colors hover:bg-[#172c48] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#233d61]" href={`${basePath}assignment1/`}>
             Open the notebook
           </a>
+          <p class="text-sm text-ink-faint">
+            or{" "}
+            <a class="text-[#002677] underline underline-offset-2 hover:no-underline" href={`${basePath}methodology/`}>
+              check the methodology page
+            </a>
+          </p>
         </div>
       </div>
     </section>
