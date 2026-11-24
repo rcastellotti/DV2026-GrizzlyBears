@@ -17,17 +17,7 @@ export function AssignmentOne() {
 
       <div class="grid grid-cols-12 gap-5">
         <div class="col-span-12 min-h-192">
-          <CapexBarchart
-            title="Hyperscaler aggregate capital spending (MSFT, GOOG, AMZN, META, ORCL)"
-            description="Combined quarterly capital expenditure, 2016–2026 (USD billions)."
-            takeaway="Quarterly cash spending accelerated after 2023."
-            source="SEC EDGAR Company Facts and Amazon’s 2017 Q2 10-Q"
-            categoryKey="quarter"
-            valueKey="totalUsdBillions"
-            valuePrefix="$"
-            valueSuffix="B"
-            highlightAfter="2023Q1"
-          />
+          <CapexBarchart />
         </div>
         <div class="col-span-12 min-h-128 lg:col-span-6">
           <WaffleLitography />
