@@ -41,6 +41,13 @@ jobs:
           export VITE_COMMIT="$(git rev-parse --short HEAD)"
           bun run build
 
+      - name: Create HTML entry points for client routes (i love client side routers)
+        run: |
+          for route in assignment1 methodology; do
+            mkdir -p "dist/$route"
+            cp dist/index.html "dist/$route/index.html"
+          done
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
