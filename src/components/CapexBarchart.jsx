@@ -35,7 +35,6 @@ export function CapexBarchart() {
     if (!width || !height) return;
 
     const svg = select(svgRef.current);
-    svg.selectAll("*").remove();
 
     const left = Math.min(64, width * 0.12);
     const right = 8;
@@ -62,7 +61,7 @@ export function CapexBarchart() {
       .attr("width", x.bandwidth())
       .attr("y", (datum) => y(datum[valueKey]))
       .attr("height", (datum) => y(0) - y(datum[valueKey]))
-      .attr("fill", (datum) => highlightAfter && datum[categoryKey] >= highlightAfter ? afterColor : beforeColor)
+      .attr("fill", (datum) => datum[categoryKey] >= highlightAfter ? afterColor : beforeColor)
       .append("title")
       .text((datum) => `${datum[categoryKey]} · ${valuePrefix}${datum[valueKey].toFixed(1)}${valueSuffix}`);
 
@@ -85,26 +84,20 @@ export function CapexBarchart() {
             aria-label={`${title}. ${description} ${takeaway}`}
           />
         </div>
-        {highlightAfter && (
-          <figcaption class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-ink-soft">
-            <span class="inline-flex items-center gap-1.5">
-              <span aria-hidden="true" class="size-2.5 rounded-xs" style={{ backgroundColor: beforeColor }} />
-              Before {highlightAfter}
-            </span>
-            <span class="inline-flex items-center gap-1.5">
-              <span aria-hidden="true" class="size-2.5 rounded-xs" style={{ backgroundColor: afterColor }} />
-              From {highlightAfter}
-            </span>
-          </figcaption>
-        )}
+        <figcaption class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-ink-soft">
+          <span class="inline-flex items-center gap-1.5">
+            <span aria-hidden="true" class="size-2.5 rounded-xs" style={{ backgroundColor: beforeColor }} />
+            Before {highlightAfter}
+          </span>
+          <span class="inline-flex items-center gap-1.5">
+            <span aria-hidden="true" class="size-2.5 rounded-xs" style={{ backgroundColor: afterColor }} />
+            From {highlightAfter}
+          </span>
+        </figcaption>
       </figure>
 
       <DataSource>{source}</DataSource>
 
-      {/* <div class="border-t border-[#dbe2eb] bg-[#f0f4f8] px-4 py-3 text-sm text-[var(--notebook-blue)] sm:px-6 sm:py-4">
-        <h4 class="font-semibold">What does this mean?</h4>
-        <p class="mt-0.5 text-ink-soft">{takeaway}</p>
-      </div> */}
     </article>
   );
 }
