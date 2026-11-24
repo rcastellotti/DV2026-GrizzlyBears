@@ -1,0 +1,152 @@
+[
+  {
+    "name": "United States (USA)",
+    "color": "#31577f",
+    "years": [
+      {
+        "year": 2015,
+        "totalTwh": 4083.99
+      },
+      {
+        "year": 2016,
+        "totalTwh": 4087.56
+      },
+      {
+        "year": 2017,
+        "totalTwh": 4052.31
+      },
+      {
+        "year": 2018,
+        "totalTwh": 4201.55
+      },
+      {
+        "year": 2019,
+        "totalTwh": 4158.38
+      },
+      {
+        "year": 2020,
+        "totalTwh": 4043.18
+      },
+      {
+        "year": 2021,
+        "totalTwh": 4153.62
+      },
+      {
+        "year": 2022,
+        "totalTwh": 4286.89
+      },
+      {
+        "year": 2023,
+        "totalTwh": 4253.91
+      },
+      {
+        "year": 2024,
+        "totalTwh": 4391.02
+      },
+      {
+        "year": 2025,
+        "totalTwh": 4519.79
+      }
+    ]
+  },
+  {
+    "name": "China (CHN)",
+    "color": "#ac5437",
+    "years": [
+      {
+        "year": 2015,
+        "totalTwh": 5798.818
+      },
+      {
+        "year": 2016,
+        "totalTwh": 6102.38
+      },
+      {
+        "year": 2017,
+        "totalTwh": 6571.647
+      },
+      {
+        "year": 2018,
+        "totalTwh": 7133.233
+      },
+      {
+        "year": 2019,
+        "totalTwh": 7471.528
+      },
+      {
+        "year": 2020,
+        "totalTwh": 7745.56
+      },
+      {
+        "year": 2021,
+        "totalTwh": 8495.849
+      },
+      {
+        "year": 2022,
+        "totalTwh": 8800.417
+      },
+      {
+        "year": 2023,
+        "totalTwh": 9402.742
+      },
+      {
+        "year": 2024,
+        "totalTwh": 10025.008
+      },
+      {
+        "year": 2025,
+        "totalTwh": 10505.74
+      }
+    ]
+  },
+  {
+    "name": "European Union (EU)",
+    "color": "#438b84",
+    "years": [
+      {
+        "year": 2015,
+        "totalTwh": 2870.374
+      },
+      {
+        "year": 2016,
+        "totalTwh": 2891.407
+      },
+      {
+        "year": 2017,
+        "totalTwh": 2922.987
+      },
+      {
+        "year": 2018,
+        "totalTwh": 2908.631
+      },
+      {
+        "year": 2019,
+        "totalTwh": 2874.507
+      },
+      {
+        "year": 2020,
+        "totalTwh": 2753.097
+      },
+      {
+        "year": 2021,
+        "totalTwh": 2875.031
+      },
+      {
+        "year": 2022,
+        "totalTwh": 2777.419
+      },
+      {
+        "year": 2023,
+        "totalTwh": 2710.223
+      },
+      {
+        "year": 2024,
+        "totalTwh": 2771.789
+      },
+      {
+        "year": 2025,
+        "totalTwh": 2799.858
+      }
+    ]
+  }
+]

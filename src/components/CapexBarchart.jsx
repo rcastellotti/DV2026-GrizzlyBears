@@ -1,3 +1,4 @@
+import { DataSource } from "./DataSource";
 import { useEffect, useRef, useState } from "preact/hooks";
 import { axisBottom, axisLeft, max, scaleBand, scaleLinear, select } from "d3";
 import quarterlyCapex from "../data/quarterly-capex.json";
@@ -98,14 +99,12 @@ export function CapexBarchart({
         )}
       </figure>
 
-      <p class="px-4 pb-4 text-xs text-ink-soft sm:px-6">
-        <span class="font-semibold">Data source</span> · {source}
-      </p>
+      <DataSource>{source}</DataSource>
 
-      <div class="border-t border-[#dbe2eb] bg-[#f0f4f8] px-4 py-3 text-sm text-[var(--notebook-blue)] sm:px-6 sm:py-4">
+      {/* <div class="border-t border-[#dbe2eb] bg-[#f0f4f8] px-4 py-3 text-sm text-[var(--notebook-blue)] sm:px-6 sm:py-4">
         <h4 class="font-semibold">What does this mean?</h4>
         <p class="mt-0.5 text-ink-soft">{takeaway}</p>
-      </div>
+      </div> */}
     </article>
   );
 }

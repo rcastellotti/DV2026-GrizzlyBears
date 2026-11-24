@@ -1,3 +1,5 @@
+import { DataSource } from "./DataSource";
+
 const companies = [
   { name: "ASML", percentage: "94.1%", tiles: 94, color: "#f58220" },
   { name: "Nikon", percentage: "2.5%", tiles: 3, color: "#ffcc00" },
@@ -43,18 +45,17 @@ export function WaffleLitography() {
         </figcaption>
       </figure>
 
-      <p class="border-t border-[#dbe2eb] px-4 py-3 text-xs leading-relaxed text-ink-soft sm:px-6">
-        Source: Takashi Yunogami, EE Times Japan, elaboration on Morgan Stanley Securities data, {" "}
+      <DataSource note="Each tile represents 1%; values are rounded to whole tiles for display.">
+        Takashi Yunogami, EE Times Japan, elaboration on Morgan Stanley Securities data, {" "}
         <a
-          class="text-[#002677] underline underline-offset-2 hover:no-underline"
           href="https://eetimes.itmedia.co.jp/ee/articles/2508/26/news015_3.html"
           target="_blank"
           rel="noreferrer"
         >
           article
         </a>
-        . Each tile represents 1%; values are rounded to whole tiles for display.
-      </p>
+        .
+      </DataSource>
     </article>
   );
 }
