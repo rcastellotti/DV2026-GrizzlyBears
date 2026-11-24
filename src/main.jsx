@@ -6,6 +6,7 @@ import { Methodology } from "./pages/Methodology";
 import { Footer } from "./components/Footer";
 import "./styles.css";
 
+const basePath = import.meta.env.BASE_URL;
 
 function App() {
   return (
@@ -13,9 +14,9 @@ function App() {
       <div class="site-shell notebook">
         <main class="paper flex min-h-[70vh] flex-col">
           <Router>
-            <Route path="/" component={Home} />
-            <Route path="/assignment1/" component={AssignmentOne} />
-            <Route path="/methodology/" component={Methodology} />
+            <Route path={basePath} component={Home} />
+            <Route path={`${basePath}assignment1/`} component={AssignmentOne} />
+            <Route path={`${basePath}methodology/`} component={Methodology} />
           </Router>
           <Footer />
         </main>

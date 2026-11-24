@@ -1,3 +1,5 @@
+const basePath = import.meta.env.BASE_URL;
+
 export function Home() {
   return (
     <section class="page-pad flex flex-1 flex-col py-4">
@@ -24,12 +26,12 @@ export function Home() {
         </p>
 
         <div class="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-          <a class="inline-block rounded bg-[#233d61] px-[18px] py-2.5 text-base font-semibold text-white transition-colors hover:bg-[#172c48] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#233d61]" href="/assignment1/">
+          <a class="inline-block rounded bg-[#233d61] px-[18px] py-2.5 text-base font-semibold text-white transition-colors hover:bg-[#172c48] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#233d61]" href={`${basePath}assignment1/`}>
             Open the notebook
           </a>
           <p class="text-sm text-ink-faint">
             or{" "}
-            <a class="text-[#002677] underline underline-offset-2 hover:no-underline" href="/methodology/">
+            <a class="text-[#002677] underline underline-offset-2 hover:no-underline" href={`${basePath}methodology/`}>
               check the methodology page
             </a>
           </p>

@@ -1,3 +1,5 @@
+const basePath = import.meta.env.BASE_URL;
+
 export function Methodology() {
   return (
     <section aria-labelledby="methodology-title" class="page-pad flex-1 py-10 sm:py-14">
@@ -21,7 +23,7 @@ export function Methodology() {
         </p>
       </div>
       <nav class="mt-10 border-t border-ink/25 pt-4 text-base font-semibold text-[var(--notebook-blue)]" aria-label="Site pages">
-        <a class="hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-dashed" href="/" rel="prev">
+        <a class="hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-dashed" href={basePath} rel="prev">
           <span aria-hidden="true">←</span> Cover
         </a>
       </nav>

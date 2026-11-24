@@ -4,6 +4,8 @@ import { ElectricityGenerationMix } from "../components/ElectricityGenerationMix
 import { ElectricityGenerationTotals } from "../components/ElectricityGenerationTotals";
 import { WaffleLitography } from "../components/WaffleLitography";
 
+const basePath = import.meta.env.BASE_URL;
+
 export function AssignmentOne() {
   return (
     <section aria-labelledby="assignment-1-title" class="page-pad pt-10 pb-12 sm:pt-14 sm:pb-16">
@@ -41,7 +43,7 @@ export function AssignmentOne() {
         </div>
       </div>
       <nav class="mt-8 flex justify-start border-t border-ink/25 pt-4 text-base font-semibold text-[var(--notebook-blue)]" aria-label="Notebook pages">
-        <a class="hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-dashed" href="/" rel="prev">
+        <a class="hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-dashed" href={basePath} rel="prev">
           <span aria-hidden="true">←</span> Cover
         </a>
       </nav>
