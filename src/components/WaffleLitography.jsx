@@ -46,7 +46,7 @@ export function WaffleLitography() {
       </figure>
 
       <DataSource note="Each tile represents 1%; values are rounded to whole tiles for display.">
-        Takashi Yunogami, EE Times Japan, elaboration on Morgan Stanley Securities data, {" "}
+        Takashi Yunogami, EE Times Japan, elaboration on Morgan Stanley Securities data (2024), {" "}
         <a
           href="https://eetimes.itmedia.co.jp/ee/articles/2508/26/news015_3.html"
           target="_blank"
