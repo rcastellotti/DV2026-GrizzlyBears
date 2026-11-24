@@ -56,3 +56,6 @@ bun dev # starts local development server
 ## Running in production
 
 A Github Action deploys every commit to master to https://rcastellotti.github.io/DV2026-GrizzlyBears/
+
+
+Additionally, the netlify integration deploys a preview website for every single PR to facilitate reviews.
