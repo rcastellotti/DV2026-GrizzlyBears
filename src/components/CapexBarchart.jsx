@@ -3,19 +3,19 @@ import { useEffect, useRef, useState } from "preact/hooks";
 import { axisBottom, axisLeft, max, scaleBand, scaleLinear, select } from "d3";
 import quarterlyCapex from "../data/quarterly-capex.json";
 
-export function CapexBarchart({
-  title,
-  description,
-  takeaway,
-  source,
-  categoryKey,
-  valueKey,
-  valuePrefix = "",
-  valueSuffix = "",
-  highlightAfter,
-  beforeColor = "#31577f",
-  afterColor = "#438b84",
-}) {
+export function CapexBarchart() {
+  const title = "Hyperscaler aggregate capital spending (MSFT, GOOG, AMZN, META, ORCL)";
+  const description = "Combined quarterly capital expenditure, 2016–2026 (USD billions).";
+  const takeaway = "Quarterly cash spending accelerated after 2023.";
+  const source = "SEC EDGAR Company Facts and Amazon’s 2017 Q2 10-Q";
+  const categoryKey = "quarter";
+  const valueKey = "totalUsdBillions";
+  const valuePrefix = "$";
+  const valueSuffix = "B";
+  const highlightAfter = "2023Q1";
+  const beforeColor = "#31577f";
+  const afterColor = "#438b84";
+
   const plotContainer = useRef(null);
   const svgRef = useRef(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
@@ -67,7 +67,7 @@ export function CapexBarchart({
       .text((datum) => `${datum[categoryKey]} · ${valuePrefix}${datum[valueKey].toFixed(1)}${valueSuffix}`);
 
     return () => svg.selectAll("*").remove();
-  }, [categoryKey, valueKey, valuePrefix, valueSuffix, highlightAfter, beforeColor, afterColor, size]);
+  }, [size]);
 
   return (
     <article class="flex h-full min-w-0 flex-col overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b]">
