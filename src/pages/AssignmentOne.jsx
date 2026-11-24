@@ -1,4 +1,5 @@
 import { CapexBarchart } from "../components/CapexBarchart";
+import { CriticalMineralsHeatmap } from "../components/CriticalMineralsHeatmap";
 import { ElectricityGenerationMix } from "../components/ElectricityGenerationMix";
 import { ElectricityGenerationTotals } from "../components/ElectricityGenerationTotals";
 import { WaffleLitography } from "../components/WaffleLitography";
@@ -28,6 +29,9 @@ export function AssignmentOne() {
         </div>
         <div class="col-span-12 min-h-128 lg:col-span-6">
           <WaffleLitography />
+        </div>
+        <div class="col-span-12 lg:col-span-6">
+          <CriticalMineralsHeatmap />
         </div>
         <div class="col-span-12">
           <ElectricityGenerationMix />

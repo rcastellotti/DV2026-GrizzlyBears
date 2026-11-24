@@ -1,0 +1,79 @@
+[
+  {
+    "mineral": "Copper",
+    "mining": {
+      "region": "Chile",
+      "share": 24.0
+    },
+    "refining": {
+      "region": "China",
+      "share": 50.0
+    }
+  },
+  {
+    "mineral": "Lithium",
+    "mining": {
+      "region": "Australia",
+      "share": 37.0
+    },
+    "refining": {
+      "region": "China",
+      "share": 73.5
+    }
+  },
+  {
+    "mineral": "Nickel",
+    "mining": {
+      "region": "Indonesia",
+      "share": 65.0
+    },
+    "refining": {
+      "region": "Indonesia",
+      "share": 45.0
+    }
+  },
+  {
+    "mineral": "Cobalt",
+    "mining": {
+      "region": "DR Congo",
+      "share": 67.0
+    },
+    "refining": {
+      "region": "China",
+      "share": 75.5
+    }
+  },
+  {
+    "mineral": "Graphite",
+    "mining": {
+      "region": "China",
+      "share": 82.0
+    },
+    "refining": {
+      "region": "China",
+      "share": 94.5
+    }
+  },
+  {
+    "mineral": "Manganese",
+    "mining": {
+      "region": "Africa",
+      "share": 63.0
+    },
+    "refining": {
+      "region": "China",
+      "share": 95.5
+    }
+  },
+  {
+    "mineral": "Rare earths",
+    "mining": {
+      "region": "China",
+      "share": 56.0
+    },
+    "refining": {
+      "region": "China",
+      "share": 84.5
+    }
+  }
+]
