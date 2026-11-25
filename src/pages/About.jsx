@@ -1,3 +1,7 @@
+function ExternalLink(props) {
+  return <a {...props} target="_blank" rel="noopener noreferrer" />;
+}
+
 export function About() {
   return (
     <section
@@ -12,12 +16,12 @@ export function About() {
       <div class="space-y-5 text-xs leading-relaxed text-ink-soft sm:text-sm">
         <p>
           A{" "}
-          <a
+          <ExternalLink
             class="text-[#002677] underline underline-offset-2 hover:no-underline"
             href="https://corsi.unige.it/en/off.f/2025/ins/83997"
           >
             Data Visualization
-          </a>{" "}
+          </ExternalLink>{" "}
           project by <b>GrizzlyBears</b> — Academic Year 2026/2027.
         </p>
 
@@ -34,9 +38,9 @@ export function About() {
             paywalls or paid services such as <b>Bloomberg</b> and{" "}
             <b>Morgan Stanley Research</b>, or specialist publications like{" "}
             <b>SemiAnalysis</b>. A notable exception is{" "}
-            <a href="https://epoch.ai/data">
+            <ExternalLink href="https://epoch.ai/data">
               <b>Epoch AI</b>
-            </a>
+            </ExternalLink>
             , a research institute publishing free-access datasets.
           </p>
           <p>
@@ -62,9 +66,9 @@ export function About() {
             to it and <i>circular financing</i> further muddy the waters. A
             brief overview of our understanding of these practices can be found
             in{" "}
-            <a href="https://github.com/rcastellotti/DV2026-GrizzlyBears/issues/40">
+            <ExternalLink href="https://github.com/rcastellotti/DV2026-GrizzlyBears/issues/40">
               issue #40
-            </a>{" "}
+            </ExternalLink>{" "}
             (TODO cleanup).
           </p>
           <p>
@@ -74,22 +78,22 @@ export function About() {
           <p class="font-semibold text-ink">Resources</p>
           <ul class="list-disc space-y-1 pl-5">
             <li>
-              <a href="https://example.com/lorem-ipsum">
+              <ExternalLink href="https://example.com/lorem-ipsum">
                 Lorem ipsum dolor sit amet
-              </a>
+              </ExternalLink>
             </li>
             <li>
-              <a href="https://example.com/consectetur">
+              <ExternalLink href="https://example.com/consectetur">
                 Consectetur adipiscing elit
-              </a>
+              </ExternalLink>
             </li>
             <li>
-              <a href="https://example.com/eiusmod">Sed do eiusmod tempor</a>
+              <ExternalLink href="https://example.com/eiusmod">Sed do eiusmod tempor</ExternalLink>
             </li>
             <li>
-              <a href="https://example.com/incididunt">
+              <ExternalLink href="https://example.com/incididunt">
                 Incididunt ut labore et dolore
-              </a>
+              </ExternalLink>
             </li>
           </ul>
         </section>
@@ -103,42 +107,42 @@ export function About() {
           </h2>
           <p>
             Data extraction scripts are available in{" "}
-            <a href="https://github.com/rcastellotti/DV2026-GrizzlyBears/tree/main/extractors">
+            <ExternalLink href="https://github.com/rcastellotti/DV2026-GrizzlyBears/tree/main/extractors">
               <code>extractors/</code>
-            </a>
-            , and the <a href={`${__REPO__}/blob/HEAD/README.md`}>README</a>{" "}
+            </ExternalLink>
+            , and the <ExternalLink href={`${__REPO__}/blob/HEAD/README.md`}>README</ExternalLink>{" "}
             explains how to run them. The scripts and the rest of the project’s
             code are released under the{" "}
-            <a href={`${__REPO__}/blob/HEAD/LICENSE`}>MIT license</a>.
+            <ExternalLink href={`${__REPO__}/blob/HEAD/LICENSE`}>MIT license</ExternalLink>.
           </p>
           <p>
             We encourage you to reproduce our experiments. Start with{" "}
             <code>nix develop</code>. The{" "}
-            <a href={`${__REPO__}/blob/HEAD/flake.nix`}>project flake</a> pins
+            <ExternalLink href={`${__REPO__}/blob/HEAD/flake.nix`}>project flake</ExternalLink> pins
             the tools and dependencies so you can use the very same environment
             we do. See the{" "}
-            <a href="https://nix.dev/concepts/flakes.html">
+            <ExternalLink href="https://nix.dev/concepts/flakes.html">
               Nix flake documentation
-            </a>{" "}
+            </ExternalLink>{" "}
             for more on how that works.
           </p>
           <p>
-            The site uses <a href="https://preactjs.com/">Preact</a> for its
-            pages and <a href="https://d3js.org/">D3.js</a> for the charts, it
-            is styled with <a href="https://tailwindcss.com">Tailwind CSS</a>,
-            our build tool of choice is <a href="https://vite.dev/">Vite</a>,
-            and we are using the <a href="https://bun.com/">Bun</a> runtime. The
+            The site uses <ExternalLink href="https://preactjs.com/">Preact</ExternalLink> for its
+            pages and <ExternalLink href="https://d3js.org/">D3.js</ExternalLink> for the charts, it
+            is styled with <ExternalLink href="https://tailwindcss.com">Tailwind CSS</ExternalLink>,
+            our build tool of choice is <ExternalLink href="https://vite.dev/">Vite</ExternalLink>,
+            and we are using the <ExternalLink href="https://bun.com/">Bun</ExternalLink> runtime. The
             data extraction scripts are in{" "}
-            <a href="https://www.python.org/">Python</a>. The website is hosted
-            by <a href="https://docs.github.com/en/pages">GitHub Pages</a>, but
+            <ExternalLink href="https://www.python.org/">Python</ExternalLink>. The website is hosted
+            by <ExternalLink href="https://docs.github.com/en/pages">GitHub Pages</ExternalLink>, but
             you probably already knew that. We stand on the shoulder of giants
             and incredible open-source communities.
           </p>
           <p>
             We welcome pull requests, issues, remarks and feedback in our{" "}
-            <a href="https://github.com/rcastellotti/DV2026-GrizzlyBears">
+            <ExternalLink href="https://github.com/rcastellotti/DV2026-GrizzlyBears">
               GitHub
-            </a>{" "}
+            </ExternalLink>{" "}
             repository, where you can also ask questions should you decide to
             extend or remix our work.
           </p>
