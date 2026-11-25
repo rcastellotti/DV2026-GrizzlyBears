@@ -28,6 +28,12 @@ Final Assignment for the [Data Visualization](https://corsi.unige.it/en/off.f/20
 + experienced in data analysis and data management
 + little experience on web design
 
+### Virginia
+
++ student of CS ~ software security
++ partecipant to DVSS (Data Visualization Summer School of Malga) in 2025
++ SAW during the Bachelor
+
 ## Technologies we plan to use
 
 We plan to use [Preact](https://preactjs.com/), a micro react framework with API compatibility) with [Tailwind CSS](https://tailwindcss.com/), an atomic CSS framework with [D3.js](https://d3js.org/) for visualizations.
