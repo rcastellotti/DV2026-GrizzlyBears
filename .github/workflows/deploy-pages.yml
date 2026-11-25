@@ -43,7 +43,7 @@ jobs:
 
       - name: Create HTML entry points for client routes (i love client side routers)
         run: |
-          for route in assignment1 methodology; do
+          for route in assignment1 about; do
             mkdir -p "dist/$route"
             cp dist/index.html "dist/$route/index.html"
           done
