@@ -1,15 +1,10 @@
-import { SupplyChainFigure } from "../components/SupplyChainFigure.jsx";
-
 const basePath = import.meta.env.BASE_URL;
 
 export function Home() {
   return (
     <section class="page-pad flex flex-1 flex-col py-4">
-      <div class="flex w-full items-start justify-between gap-4">
-        <div class="min-w-0 max-w-sm">
-          <SupplyChainFigure />
-        </div>
-        <div class="shrink-0 text-right text-xs text-ink-soft">
+      <div class="flex justify-end">
+        <div class="text-right text-xs text-ink-soft">
           <p class="text-ink-faint">a project by:</p>
           <ul class="font-bold text-ink">
             <li>Gianluca Bottiglieri</li>
