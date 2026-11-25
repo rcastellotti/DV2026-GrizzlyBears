@@ -4,8 +4,10 @@ import { axisBottom, axisLeft, max, scaleBand, scaleLinear, select } from "d3";
 import quarterlyCapex from "../data/quarterly-capex.json";
 
 export function CapexBarchart() {
-  const title = "Hyperscaler aggregate capital spending (MSFT, GOOG, AMZN, META, ORCL)";
-  const description = "Combined quarterly capital expenditure, 2016–2026 (USD billions).";
+  const title =
+    "Hyperscaler aggregate capital spending (MSFT, GOOG, AMZN, META, ORCL)";
+  const description =
+    "Combined quarterly capital expenditure, 2016–2026 (USD billions).";
   const takeaway = "Quarterly cash spending accelerated after 2023.";
   const source = "SEC EDGAR Company Facts and Amazon’s 2017 Q2 10-Q";
   const categoryKey = "quarter";
@@ -49,21 +51,40 @@ export function CapexBarchart() {
     ).nice(5);
 
     svg.attr("viewBox", `0 0 ${width} ${height}`);
-    svg.append("g").attr("transform", `translate(${left},0)`)
-      .call(axisLeft(y).ticks(5).tickFormat((value) => `${valuePrefix}${value}${valueSuffix}`));
-    svg.append("g").attr("transform", `translate(0,${baseline})`)
-      .call(axisBottom(x)
-        .tickValues(categories.filter((category) => category.endsWith("Q1")))
-        .tickFormat((category) => category.slice(0, 4)));
+    svg
+      .append("g")
+      .attr("transform", `translate(${left},0)`)
+      .call(
+        axisLeft(y)
+          .ticks(5)
+          .tickFormat((value) => `${valuePrefix}${value}${valueSuffix}`),
+      );
+    svg
+      .append("g")
+      .attr("transform", `translate(0,${baseline})`)
+      .call(
+        axisBottom(x)
+          .tickValues(categories.filter((category) => category.endsWith("Q1")))
+          .tickFormat((category) => category.slice(0, 4)),
+      );
 
-    svg.append("g").selectAll("rect").data(reported, (datum) => datum[categoryKey]).join("rect")
+    svg
+      .append("g")
+      .selectAll("rect")
+      .data(reported, (datum) => datum[categoryKey])
+      .join("rect")
       .attr("x", (datum) => x(datum[categoryKey]))
       .attr("width", x.bandwidth())
       .attr("y", (datum) => y(datum[valueKey]))
       .attr("height", (datum) => y(0) - y(datum[valueKey]))
-      .attr("fill", (datum) => datum[categoryKey] >= highlightAfter ? afterColor : beforeColor)
+      .attr("fill", (datum) =>
+        datum[categoryKey] >= highlightAfter ? afterColor : beforeColor,
+      )
       .append("title")
-      .text((datum) => `${datum[categoryKey]} · ${valuePrefix}${datum[valueKey].toFixed(1)}${valueSuffix}`);
+      .text(
+        (datum) =>
+          `${datum[categoryKey]} · ${valuePrefix}${datum[valueKey].toFixed(1)}${valueSuffix}`,
+      );
 
     return () => svg.selectAll("*").remove();
   }, [size]);
@@ -71,7 +92,7 @@ export function CapexBarchart() {
   return (
     <article class="flex h-full min-w-0 flex-col overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b]">
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
-        <h3 class="home-title text-base font-semibold">{title}</h3>
+        <h3 class=" text-base font-semibold">{title}</h3>
         <p class="mt-1 text-xs text-ink-soft">{description}</p>
       </header>
 
@@ -86,18 +107,25 @@ export function CapexBarchart() {
         </div>
         <figcaption class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-ink-soft">
           <span class="inline-flex items-center gap-1.5">
-            <span aria-hidden="true" class="size-2.5 rounded-xs" style={{ backgroundColor: beforeColor }} />
+            <span
+              aria-hidden="true"
+              class="size-2.5 rounded-xs"
+              style={{ backgroundColor: beforeColor }}
+            />
             Before {highlightAfter}
           </span>
           <span class="inline-flex items-center gap-1.5">
-            <span aria-hidden="true" class="size-2.5 rounded-xs" style={{ backgroundColor: afterColor }} />
+            <span
+              aria-hidden="true"
+              class="size-2.5 rounded-xs"
+              style={{ backgroundColor: afterColor }}
+            />
             From {highlightAfter}
           </span>
         </figcaption>
       </figure>
 
       <DataSource>{source}</DataSource>
-
     </article>
   );
 }

@@ -8,11 +8,9 @@ const basePath = import.meta.env.BASE_URL;
 
 export function AssignmentOne() {
   return (
-    <section aria-labelledby="assignment-1-title" class="page-pad pt-10 pb-12 sm:pt-14 sm:pb-16">
-      <div class="mb-7 border-b border-ink/25 pb-4 sm:mb-9">
-        <h2 id="assignment-1-title" class="home-title text-xl font-bold">
-          Assignment 1
-        </h2>
+    <section class="page-pad py-8 sm:py-10">
+      <div class="mb-4 border-b border-ink/25 pb-2 sm:mb-6">
+        <h2 class="text-2xl font-bold">Assignment 1</h2>
       </div>
 
       <div class="grid grid-cols-12 gap-5">
@@ -32,8 +30,12 @@ export function AssignmentOne() {
           <ElectricityGenerationTotals />
         </div>
       </div>
-      <nav class="mt-8 flex justify-start border-t border-ink/25 pt-4 text-sm font-semibold text-[var(--notebook-blue)]" aria-label="Notebook pages">
-        <a class="hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-dashed" href={basePath} rel="prev">
+      <nav class="mt-8 flex justify-start border-t border-ink/25 pt-4 text-sm font-semibold">
+        <a
+          class="underline underline-offset-2 hover:no-underline"
+          href={basePath}
+          rel="prev"
+        >
           <span aria-hidden="true">←</span> Cover
         </a>
       </nav>

@@ -12,26 +12,35 @@ export function Home() {
             <li>Virginia Passalacqua</li>
             <li>Edoardo Siri</li>
           </ul>
-          <p class="mt-0.5 text-ink-faint">assisted by Deepseek v4.1-flash</p>
+          <p class="text-ink-faint">assisted by Deepseek v4.1-flash</p>
         </div>
       </div>
 
       <div class="flex flex-1 flex-col items-center justify-center py-10 text-center sm:py-14">
-        <h1 class="home-title max-w-4xl text-3xl leading-tight font-bold tracking-tight text-ink text-balance sm:text-5xl">
+        <h1 class=" max-w-4xl text-3xl leading-tight font-bold tracking-tight text-ink text-balance sm:text-5xl">
           AI: an industry of bottlenecks
         </h1>
 
-        <p class="mt-5 max-w-2xl text-sm leading-relaxed text-ink-soft">
-          With this project, we want to explore what makes AI possible and what might hold it back. Through data and visualizations, we aim to uncover the bottlenecks behind the AI boom and give our audience the tools to better understand it and form their own opinions.
+        <p class="mt-5 max-w-2xl text-sm leading-relaxed text-justify text-ink-soft">
+          With this project, we want to explore what makes AI possible and what
+          might hold it back. Through data and visualizations, we aim to uncover
+          the bottlenecks behind the AI boom and give our audience the tools to
+          better understand it and form their own opinions.
         </p>
 
         <div class="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-          <a class="inline-block rounded bg-[#233d61] px-[18px] py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#172c48] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#233d61]" href={`${basePath}assignment1/`}>
+          <a
+            class="inline-block rounded bg-[#233d61] px-[18px] py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#172c48] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#233d61]"
+            href={`${basePath}assignment1/`}
+          >
             Open the notebook
           </a>
           <p class="text-xs text-ink-faint">
             or{" "}
-            <a class="text-[#002677] underline underline-offset-2 hover:no-underline" href={`${basePath}methodology/`}>
+            <a
+              class="text-[#002677] underline underline-offset-2 hover:no-underline"
+              href={`${basePath}methodology/`}
+            >
               check the methodology page
             </a>
           </p>

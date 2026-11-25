@@ -20,7 +20,11 @@
     color: var(--color-ink);
     background-color: var(--color-desk);
     background-image:
-      radial-gradient(circle at 16% 10%, rgba(255, 252, 244, 0.35), transparent 34%),
+      radial-gradient(
+        circle at 16% 10%,
+        rgba(255, 252, 244, 0.35),
+        transparent 34%
+      ),
       linear-gradient(118deg, #dcd5c8 0%, #d2cabc 52%, #d8d1c4 100%);
     font-family: var(--font-note);
     font-size: 1rem;
@@ -29,11 +33,17 @@
     text-rendering: optimizeLegibility;
   }
 
-  ::selection { background: rgba(235, 205, 125, 0.52); }
-  a { color: inherit; }
+  ::selection {
+    background: rgba(235, 205, 125, 0.52);
+  }
+  a {
+    color: inherit;
+  }
 }
 
-.site-shell { padding: 34px 22px 52px; }
+.site-shell {
+  padding: 34px 22px 52px;
+}
 .paper {
   --margin-x: 68px;
   position: relative;
@@ -45,30 +55,78 @@
   margin-inline: auto;
   background-color: var(--color-paper);
   background-image:
-    linear-gradient(90deg, transparent 0, transparent calc(var(--margin-x) - 1px), rgba(200, 16, 46, 0.23) calc(var(--margin-x) - 1px), rgba(200, 16, 46, 0.23) var(--margin-x), transparent var(--margin-x)),
-    repeating-linear-gradient(0deg, transparent 0, transparent 23px, rgba(0, 38, 119, 0.065) 23px, rgba(0, 38, 119, 0.065) 24px),
-    repeating-linear-gradient(90deg, transparent 0, transparent 23px, rgba(0, 38, 119, 0.065) 23px, rgba(0, 38, 119, 0.065) 24px);
+    linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(var(--margin-x) - 1px),
+      rgba(200, 16, 46, 0.23) calc(var(--margin-x) - 1px),
+      rgba(200, 16, 46, 0.23) var(--margin-x),
+      transparent var(--margin-x)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 23px,
+      rgba(0, 38, 119, 0.065) 23px,
+      rgba(0, 38, 119, 0.065) 24px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 23px,
+      rgba(0, 38, 119, 0.065) 23px,
+      rgba(0, 38, 119, 0.065) 24px
+    );
   border: 1px solid rgba(58, 52, 40, 0.18);
   border-radius: 2px;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.58) inset, 0 18px 46px rgba(58, 49, 36, 0.15), 0 2px 5px rgba(58, 49, 36, 0.08);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.58) inset,
+    0 18px 46px rgba(58, 49, 36, 0.15),
+    0 2px 5px rgba(58, 49, 36, 0.08);
 }
-.page-pad { padding-left: 108px; padding-right: 64px; }
-.home-title { font-family: "Roboto Slab", Georgia, serif; }
-.notebook-footer { background-color: var(--color-paper); }
+.page-pad {
+  padding-left: 108px;
+  padding-right: 64px;
+}
+.notebook-footer {
+  background-color: var(--color-paper);
+}
 
 .notebook {
   --notebook-blue: #233d61;
 }
 @media (max-width: 1120px) {
-  .page-pad { padding-left: 94px; padding-right: 46px; }
+  .page-pad {
+    padding-left: 94px;
+    padding-right: 46px;
+  }
 }
 @media (max-width: 920px) {
-  .site-shell { padding: 18px 16px 40px; }
-  .paper { min-height: calc(100svh - 58px); --margin-x: 52px; }
-  .page-pad { padding-left: 78px; padding-right: 32px; }
+  .site-shell {
+    padding: 18px 16px 40px;
+  }
+  .paper {
+    min-height: calc(100svh - 58px);
+    --margin-x: 52px;
+  }
+  .page-pad {
+    padding-left: 78px;
+    padding-right: 32px;
+  }
 }
 @media (max-width: 620px) {
-  .site-shell { padding: 0; }
-  .paper { min-height: 100svh; --margin-x: 30px; border-inline: 0; border-radius: 0; box-shadow: none; }
-  .page-pad { padding-left: 48px; padding-right: 18px; }
+  .site-shell {
+    padding: 0;
+  }
+  .paper {
+    min-height: 100svh;
+    --margin-x: 30px;
+    border-inline: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .page-pad {
+    padding-left: 48px;
+    padding-right: 18px;
+  }
 }
