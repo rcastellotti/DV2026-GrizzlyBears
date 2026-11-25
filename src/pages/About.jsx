@@ -124,10 +124,11 @@ export function About() {
           </p>
           <p>
             The site uses <a href="https://preactjs.com/">Preact</a> for its
-            pages and <a href="https://d3js.org/">D3.js</a> for the charts, our
-            build tool of choice is <a href="https://vite.dev/">Vite</a>, and we
-            are using the <a href="https://bun.com/">Bun</a> runtime. The data
-            extraction scripts are in{" "}
+            pages and <a href="https://d3js.org/">D3.js</a> for the charts, it
+            is styled with <a href="https://tailwindcss.com">Tailwind CSS</a>,
+            our build tool of choice is <a href="https://vite.dev/">Vite</a>,
+            and we are using the <a href="https://bun.com/">Bun</a> runtime. The
+            data extraction scripts are in{" "}
             <a href="https://www.python.org/">Python</a>. The website is hosted
             by <a href="https://docs.github.com/en/pages">GitHub Pages</a>, but
             you probably already knew that. We stand on the shoulder of giants
