@@ -16,19 +16,19 @@ export function AssignmentOne() {
       </div>
 
       <div class="grid grid-cols-12 gap-5">
-        <div class="col-span-12 min-h-192">
+        <div class="col-span-12 min-h-128">
           <CapexBarchart />
         </div>
-        <div class="col-span-12 min-h-128 lg:col-span-6">
+        <div class="col-span-12 min-h-96 lg:col-span-6">
           <WaffleLitography />
         </div>
         <div class="col-span-12 lg:col-span-6">
           <CriticalMineralsHeatmap />
         </div>
-        <div class="col-span-7">
+        <div class="col-span-12 lg:col-span-6">
           <ElectricityGenerationMix />
         </div>
-        <div class="col-span-5">
+        <div class="col-span-12 lg:col-span-6">
           <ElectricityGenerationTotals />
         </div>
       </div>
