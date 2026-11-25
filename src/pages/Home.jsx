@@ -22,10 +22,9 @@ export function Home() {
         </h1>
 
         <p class="mt-5 max-w-2xl text-sm leading-relaxed text-justify text-ink-soft">
-          With this project, we want to explore what makes AI possible and what
-          might hold it back. Through data and visualizations, we aim to uncover
-          the bottlenecks behind the AI boom and give our audience the tools to
-          better understand it and form their own opinions.
+          What makes the AI boom possible, and what could slow it down? We use
+          data and visualizations to explore where the AI supply chain depends
+          on specialized equipment, critical minerals, and electricity.
         </p>
 
         <div class="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
@@ -39,9 +38,9 @@ export function Home() {
             or{" "}
             <a
               class="text-[#002677] underline underline-offset-2 hover:no-underline"
-              href={`${basePath}methodology/`}
+              href={`${basePath}about/`}
             >
-              check the methodology page
+              learn about the project
             </a>
           </p>
         </div>
