@@ -1,6 +1,6 @@
 import { render } from "preact";
 import { LocationProvider, Route, Router } from "preact-iso";
-import { Home } from "./components/Home";
+import { Home } from "./pages/Home";
 import { AssignmentOne } from "./pages/AssignmentOne";
 import { Methodology } from "./pages/Methodology";
 import { Footer } from "./components/Footer";

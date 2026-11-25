@@ -39,7 +39,7 @@ export function ElectricityGenerationMix() {
     for (const [index, region] of regions.entries()) {
       const panel = svg.append("g").attr("transform", `translate(0,${24 + panelStride * index})`);
       panel.append("text").attr("x", left).attr("y", -10)
-        .attr("font-size", 13).attr("font-weight", 600).attr("fill", "currentColor")
+        .attr("font-size", 11).attr("font-weight", 600).attr("fill", "currentColor")
         .text(region.name);
 
       panel.append("g").attr("transform", `translate(${left},0)`)
@@ -72,8 +72,8 @@ export function ElectricityGenerationMix() {
   return (
     <article class="min-w-0 overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b]">
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
-        <h3 class="home-title text-xl font-semibold">Electricity production by source</h3>
-        <p class="mt-1 text-sm text-ink-soft">
+        <h3 class="home-title text-base font-semibold">Electricity production by source</h3>
+        <p class="mt-1 text-xs text-ink-soft">
           Share of domestic electricity generation in {years.join(", ")}.
         </p>
       </header>

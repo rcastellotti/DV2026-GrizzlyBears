@@ -13,11 +13,11 @@ export function CriticalMineralsHeatmap() {
   return (
     <article class="flex h-full min-w-0 flex-col overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b]">
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
-        <h3 class="home-title text-xl font-semibold">Critical minerals production</h3>
-        <p class="mt-1 text-sm text-ink-soft">Leading country or region by share of global production, 2025.</p>
+        <h3 class="home-title text-base font-semibold">Critical minerals production</h3>
+        <p class="mt-1 text-xs text-ink-soft">Leading country or region by share of global production, 2025.</p>
       </header>
       <figure class="flex flex-1 flex-col px-3 py-4 sm:px-5">
-        <table class="w-full table-fixed border-separate border-spacing-1 text-xs sm:text-sm" aria-label="Leading critical mineral producers in 2025">
+        <table class="w-full table-fixed border-separate border-spacing-1 text-xs" aria-label="Leading critical mineral producers in 2025">
           <thead>
             <tr>
               <th scope="col" class="px-1 pb-1 text-left">Mineral</th>
