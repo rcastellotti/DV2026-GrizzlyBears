@@ -3,8 +3,8 @@ const basePath = import.meta.env.BASE_URL;
 export function Home() {
   return (
     <section class="page-pad flex flex-1 flex-col py-4">
-      <div class="flex w-full justify-end text-right text-xs text-ink-soft">
-        <div>
+      <div class="flex justify-end">
+        <div class="text-right text-xs text-ink-soft">
           <p class="text-ink-faint">a project by:</p>
           <ul class="font-bold text-ink">
             <li>Gianluca Bottiglieri</li>
@@ -22,15 +22,14 @@ export function Home() {
         </h1>
 
         <p class="mt-5 max-w-2xl text-sm leading-relaxed text-justify text-ink-soft">
-          With this project, we want to explore what makes AI possible and what
-          might hold it back. Through data and visualizations, we aim to uncover
-          the bottlenecks behind the AI boom and give our audience the tools to
-          better understand it and form their own opinions.
+          What makes the AI boom possible, and what could slow it down? We use
+          data and visualizations to explore where the AI supply chain depends
+          on specialized equipment, critical minerals, and electricity.
         </p>
 
         <div class="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
           <a
-            class="inline-block rounded bg-[#233d61] px-[18px] py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#172c48] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#233d61]"
+            class="inline-block rounded bg-[#233d61] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#172c48] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#233d61]"
             href={`${basePath}assignment1/`}
           >
             Open the notebook
@@ -39,9 +38,9 @@ export function Home() {
             or{" "}
             <a
               class="text-[#002677] underline underline-offset-2 hover:no-underline"
-              href={`${basePath}methodology/`}
+              href={`${basePath}about/`}
             >
-              check the methodology page
+              learn about the project
             </a>
           </p>
         </div>
