@@ -54,8 +54,8 @@ export function ElectricityGenerationTotals() {
   return (
     <article class="min-w-0 overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b]">
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
-        <h3 class="home-title text-xl font-semibold">Total electricity production</h3>
-        <p class="mt-1 text-sm text-ink-soft">Domestic electricity generation in terawatt-hours (TWh) in {years.join(", ")}.</p>
+        <h3 class="home-title text-base font-semibold">Total electricity production</h3>
+        <p class="mt-1 text-xs text-ink-soft">Domestic electricity generation in terawatt-hours (TWh) in {years.join(", ")}.</p>
       </header>
       <figure class="px-3 pt-3 pb-4 sm:px-5">
         <svg ref={plot} class="block w-full" height="330" role="img"

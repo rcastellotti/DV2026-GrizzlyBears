@@ -23,7 +23,7 @@
       radial-gradient(circle at 16% 10%, rgba(255, 252, 244, 0.35), transparent 34%),
       linear-gradient(118deg, #dcd5c8 0%, #d2cabc 52%, #d8d1c4 100%);
     font-family: var(--font-note);
-    font-size: 1.25rem;
+    font-size: 1rem;
     line-height: 1.4;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;

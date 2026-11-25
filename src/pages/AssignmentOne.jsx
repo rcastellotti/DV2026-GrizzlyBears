@@ -10,7 +10,7 @@ export function AssignmentOne() {
   return (
     <section aria-labelledby="assignment-1-title" class="page-pad pt-10 pb-12 sm:pt-14 sm:pb-16">
       <div class="mb-7 border-b border-ink/25 pb-4 sm:mb-9">
-        <h2 id="assignment-1-title" class="home-title text-3xl font-bold sm:text-5xl">
+        <h2 id="assignment-1-title" class="home-title text-xl font-bold">
           Assignment 1
         </h2>
       </div>
@@ -32,7 +32,7 @@ export function AssignmentOne() {
           <ElectricityGenerationTotals />
         </div>
       </div>
-      <nav class="mt-8 flex justify-start border-t border-ink/25 pt-4 text-base font-semibold text-[var(--notebook-blue)]" aria-label="Notebook pages">
+      <nav class="mt-8 flex justify-start border-t border-ink/25 pt-4 text-sm font-semibold text-[var(--notebook-blue)]" aria-label="Notebook pages">
         <a class="hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-dashed" href={basePath} rel="prev">
           <span aria-hidden="true">←</span> Cover
         </a>
