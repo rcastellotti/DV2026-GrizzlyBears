@@ -1,10 +1,15 @@
+import { SupplyChainFigure } from "../components/SupplyChainFigure.jsx";
+
 const basePath = import.meta.env.BASE_URL;
 
 export function Home() {
   return (
     <section class="page-pad flex flex-1 flex-col py-4">
-      <div class="flex w-full justify-end text-right text-xs text-ink-soft">
-        <div>
+      <div class="flex w-full items-start justify-between gap-4">
+        <div class="min-w-0 max-w-sm">
+          <SupplyChainFigure />
+        </div>
+        <div class="shrink-0 text-right text-xs text-ink-soft">
           <p class="text-ink-faint">a project by:</p>
           <ul class="font-bold text-ink">
             <li>Gianluca Bottiglieri</li>
@@ -30,7 +35,7 @@ export function Home() {
 
         <div class="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
           <a
-            class="inline-block rounded bg-[#233d61] px-[18px] py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#172c48] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#233d61]"
+            class="inline-block rounded bg-[#233d61] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#172c48] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#233d61]"
             href={`${basePath}assignment1/`}
           >
             Open the notebook
