@@ -22,11 +22,6 @@ export function Methodology() {
           Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
         </p>
       </div>
-      <nav class="mt-10 border-t border-ink/25 pt-4 text-sm font-semibold text-[var(--notebook-blue)]" aria-label="Site pages">
-        <a class="hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-dashed" href={basePath} rel="prev">
-          <span aria-hidden="true">←</span> Cover
-        </a>
-      </nav>
     </section>
   );
 }
