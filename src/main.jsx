@@ -4,7 +4,7 @@ import { Home } from "./components/Home";
 import { AssignmentOne } from "./pages/AssignmentOne";
 import { Methodology } from "./pages/Methodology";
 import { Footer } from "./components/Footer";
-import { Navbar } from "./components/Navbar";
+import { Header } from "./components/Header";
 import "./styles.css";
 
 const basePath = import.meta.env.BASE_URL;
@@ -14,7 +14,7 @@ function App() {
     <LocationProvider>
       <div class="site-shell notebook">
         <main class="paper flex min-h-[70vh] flex-col">
-          <Navbar />
+          <Header />
           <Router>
             <Route path={basePath} component={Home} />
             <Route path={`${basePath}assignment1/`} component={AssignmentOne} />
