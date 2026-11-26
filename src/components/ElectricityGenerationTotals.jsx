@@ -9,6 +9,7 @@ import {
   select,
 } from "d3";
 import { DataSource } from "./DataSource";
+import { WindowTitlebar } from "./WindowTitlebar";
 import regions from "../data/electricity-generation-totals.json";
 
 const years = regions[0].years.map(({ year }) => year);
@@ -88,7 +89,8 @@ export function ElectricityGenerationTotals({ class: className = "" }) {
   }, [width]);
 
   return (
-    <article class={`min-w-0 overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b] ${className}`}>
+    <article class={`win95-window min-w-0 overflow-hidden ${className}`}>
+      <WindowTitlebar title="Electricity generation totals" />
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
         <h3 class=" text-base font-semibold">Total electricity production</h3>
         <p class="mt-1 text-xs text-ink-soft">

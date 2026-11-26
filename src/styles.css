@@ -1,16 +1,24 @@
 @import "tailwindcss" source(none);
 
+@font-face {
+  font-family: "Departure Mono";
+  src: url("https://cdn.jsdelivr.net/gh/rektdeckard/departure-mono@main/public/assets/DepartureMono-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 /* Limit Tailwind scanning to app sources. */
 @source "./**/*.{js,jsx}";
 
 @theme {
-  --font-note: "Fira Sans", Arial, sans-serif;
-  --font-mono: "Fira Sans Mono", "Fira Mono", monospace;
-  --color-paper: #faf7ed;
-  --color-desk: #d9d9d6;
-  --color-ink: #25282a;
-  --color-ink-soft: #45494b;
-  --color-ink-faint: #747779;
+  --font-note: "Departure Mono", monospace;
+  --font-mono: "Departure Mono", monospace;
+  --color-paper: #f4f1e8;
+  --color-desk: #e9e6dc;
+  --color-ink: #181818;
+  --color-ink-soft: #3f3d37;
+  --color-ink-faint: #77736a;
 }
 
 @layer base {
@@ -18,19 +26,14 @@
     min-width: 300px;
     margin: 0;
     color: var(--color-ink);
-    background-color: var(--color-desk);
-    background-image:
-      radial-gradient(
-        circle at 16% 10%,
-        rgba(255, 252, 244, 0.35),
-        transparent 34%
-      ),
-      linear-gradient(118deg, #dcd5c8 0%, #d2cabc 52%, #d8d1c4 100%);
-    font-family: var(--font-note);
+    background-color: #e9e6dc;
+    background-image: radial-gradient(#c7c2b5 0.65px, transparent 0.65px);
+    background-size: 5px 5px;
+    font-family: "Departure Mono", monospace;
     font-size: 1rem;
     line-height: 1.4;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: auto;
+    text-rendering: auto;
   }
 
   ::selection {
@@ -42,63 +45,83 @@
 }
 
 .site-shell {
-  padding: 34px 22px 52px;
+  padding: 28px 22px 52px;
 }
 .paper {
-  --margin-x: 68px;
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1500px;
+  max-width: 1240px;
   min-height: calc(100svh - 86px);
   margin-inline: auto;
-  background-color: var(--color-paper);
-  background-image:
-    linear-gradient(
-      90deg,
-      transparent 0,
-      transparent calc(var(--margin-x) - 1px),
-      rgba(200, 16, 46, 0.23) calc(var(--margin-x) - 1px),
-      rgba(200, 16, 46, 0.23) var(--margin-x),
-      transparent var(--margin-x)
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0,
-      transparent 23px,
-      rgba(0, 38, 119, 0.065) 23px,
-      rgba(0, 38, 119, 0.065) 24px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 23px,
-      rgba(0, 38, 119, 0.065) 23px,
-      rgba(0, 38, 119, 0.065) 24px
-    );
-  border: 1px solid rgba(58, 52, 40, 0.18);
-  border-radius: 2px;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.58) inset,
-    0 18px 46px rgba(58, 49, 36, 0.15),
-    0 2px 5px rgba(58, 49, 36, 0.08);
+  background: #f4f1e8;
+  border: 1px solid #181818;
+  border-radius: 0;
+  box-shadow: 6px 6px 0 rgba(24,24,24,.14);
 }
 .page-pad {
-  padding-left: 108px;
-  padding-right: 64px;
+  padding-left: 72px;
+  padding-right: 72px;
 }
 .notebook-footer {
   background-color: var(--color-paper);
+  border-bottom: 1px solid #181818;
 }
+
+.win95-window {
+  padding: 0;
+  background: #f9f7f0;
+  border: 1px solid #181818;
+  border-radius: 0 !important;
+  box-shadow: 4px 4px 0 rgba(24,24,24,.12) !important;
+}
+.win95-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 34px;
+  padding: 4px 10px;
+  color: #f4f1e8;
+  background: #181818;
+  font-family: "Departure Mono", monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.paper h1 { font-family: "Departure Mono", monospace; letter-spacing: -.04em; }
+.paper svg text { font-family: "Departure Mono", monospace; }
+.win95-controls { display: flex; gap: 6px; }
+.win95-controls span {
+  display: grid; width: 18px; height: 18px; place-items: center;
+  color: #f4f1e8; background: transparent; border: 1px solid #f4f1e8;
+  font-size: 12px; line-height: 1;
+}
+.win95-window > header:not(.win95-titlebar) { padding: 16px 16px 4px !important; }
+.win95-window > figure { padding-inline: 16px !important; }
+.win95-window > :last-child { border-top: 1px dashed #9e998d; }
+.paper h1, .paper h2 { text-transform: uppercase; }
+.paper a { text-decoration-color: #a84e32; text-underline-offset: 3px; }
+.paper a:hover { color: #a84e32; }
+.paper a.inline-block {
+  border: 1px solid #181818;
+  border-radius: 0;
+  background: #181818;
+  color: #f4f1e8;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.paper a.inline-block:hover { background: #a84e32; color: #fff; }
 
 .notebook {
   --notebook-blue: #233d61;
 }
 @media (max-width: 1120px) {
   .page-pad {
-    padding-left: 94px;
-    padding-right: 46px;
+    padding-left: 52px;
+    padding-right: 52px;
   }
 }
 @media (max-width: 920px) {
@@ -110,8 +133,8 @@
     --margin-x: 52px;
   }
   .page-pad {
-    padding-left: 78px;
-    padding-right: 32px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 @media (max-width: 620px) {
@@ -120,13 +143,12 @@
   }
   .paper {
     min-height: 100svh;
-    --margin-x: 30px;
     border-inline: 0;
     border-radius: 0;
     box-shadow: none;
   }
   .page-pad {
-    padding-left: 48px;
+    padding-left: 18px;
     padding-right: 18px;
   }
 }

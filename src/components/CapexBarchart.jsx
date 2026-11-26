@@ -2,6 +2,7 @@ import { DataSource } from "./DataSource";
 import { useEffect, useRef, useState } from "preact/hooks";
 import { axisBottom, axisLeft, max, scaleBand, scaleLinear, select } from "d3";
 import quarterlyCapex from "../data/quarterly-capex.json";
+import { WindowTitlebar } from "./WindowTitlebar";
 
 export function CapexBarchart({ class: className = "" }) {
   const title =
@@ -112,7 +113,8 @@ export function CapexBarchart({ class: className = "" }) {
   }, [size]);
 
   return (
-    <article class={`flex h-full min-w-0 flex-col overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b] ${className}`}>
+    <article class={`win95-window flex h-full min-w-0 flex-col overflow-hidden ${className}`}>
+      <WindowTitlebar title="Capital spending" />
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
         <h3 class=" text-base font-semibold">{title}</h3>
         <p class="mt-1 text-xs text-ink-soft">{description}</p>
