@@ -1,11 +1,8 @@
-import { SupplyChainSketch } from "../components/SupplyChainSketch";
-
 const basePath = import.meta.env.BASE_URL;
 
 export function Home() {
   return (
     <section class="page-pad relative isolate flex flex-1 flex-col py-4">
-      <SupplyChainSketch />
       <div class="flex justify-end">
         <div class="text-right text-xs text-ink-soft">
           <p class="text-ink-faint">a project by:</p>

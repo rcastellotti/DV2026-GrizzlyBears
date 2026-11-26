@@ -20,6 +20,11 @@ function gitCommit() {
 
 export default defineConfig({
   base,
+  server: {
+    allowedHosts: ["local.rcastellotti.dev"],
+    port: 9172,
+    strictPort: true,
+  },
   define: {
     __COMMIT__: JSON.stringify(gitCommit()),
     __REPO__: JSON.stringify(
