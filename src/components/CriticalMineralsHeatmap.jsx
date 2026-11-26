@@ -1,14 +1,11 @@
-import { interpolateBlues, scaleSequential } from "d3";
 import { DataSource } from "./DataSource";
 import minerals from "../data/critical-minerals-2025.json";
 import { WindowTitlebar } from "./WindowTitlebar";
 
-const shareColor = scaleSequential([0, 100], interpolateBlues);
 const stages = [
   { key: "mining", label: "Mining" },
   { key: "refining", label: "Refining" },
 ];
-const legendStops = [0, 25, 50, 75, 100];
 
 export function CriticalMineralsHeatmap({ class: className = "" }) {
   return (
@@ -50,8 +47,8 @@ export function CriticalMineralsHeatmap({ class: className = "" }) {
                       key={key}
                       class="rounded-xs px-1 py-1.5 text-center"
                       style={{
-                        backgroundColor: shareColor(share),
-                        color: share >= 65 ? "white" : "#14283b",
+                        backgroundColor: `color-mix(in oklab, var(--color-amber) ${share}%, var(--color-silver))`,
+                        color: "var(--color-ink)",
                       }}
                     >
                       <span
@@ -76,7 +73,7 @@ export function CriticalMineralsHeatmap({ class: className = "" }) {
             class="h-2 rounded-xs"
             aria-hidden="true"
             style={{
-              background: `linear-gradient(to right, ${legendStops.map((share) => shareColor(share)).join(", ")})`,
+              background: "linear-gradient(to right in oklab, var(--color-silver), var(--color-amber))",
             }}
           />
           <div class="mt-1 flex justify-between tabular-nums">

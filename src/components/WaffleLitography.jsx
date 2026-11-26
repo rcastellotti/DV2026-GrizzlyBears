@@ -2,9 +2,9 @@ import { DataSource } from "./DataSource";
 import { WindowTitlebar } from "./WindowTitlebar";
 
 const companies = [
-  { name: "Nikon", percentage: "2.5%", tiles: 3, color: "#ffcc00" },
-  { name: "Canon", percentage: "3.4%", tiles: 3, color: "#cc0000" },
-  { name: "ASML", percentage: "94.1%", tiles: 94, color: "#31577f" },
+  { name: "Nikon", percentage: "2.5%", tiles: 3, color: "var(--color-amber)" },
+  { name: "Canon", percentage: "3.4%", tiles: 3, color: "var(--color-oxide)" },
+  { name: "ASML", percentage: "94.1%", tiles: 94, color: "var(--color-blue)" },
 ];
 
 const tiles = companies.flatMap(({ name, color, tiles: count }) =>

@@ -1,7 +1,7 @@
 [
   {
     "name": "United States (USA)",
-    "color": "#31577f",
+    "color": "var(--color-blue)",
     "years": [
       {
         "year": 2015,
@@ -19,7 +19,7 @@
   },
   {
     "name": "China (CHN)",
-    "color": "#ac5437",
+    "color": "var(--color-oxide)",
     "years": [
       {
         "year": 2015,
@@ -37,7 +37,7 @@
   },
   {
     "name": "European Union (EU)",
-    "color": "#438b84",
+    "color": "var(--color-phosphor)",
     "years": [
       {
         "year": 2015,

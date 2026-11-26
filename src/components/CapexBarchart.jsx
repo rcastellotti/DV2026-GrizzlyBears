@@ -16,8 +16,8 @@ export function CapexBarchart({ class: className = "" }) {
   const valuePrefix = "$";
   const valueSuffix = "B";
   const highlightAfter = "2023Q1";
-  const beforeColor = "#31577f";
-  const afterColor = "#438b84";
+  const beforeColor = "var(--color-blue)";
+  const afterColor = "var(--color-phosphor)";
 
   const plotContainer = useRef(null);
   const svgRef = useRef(null);
@@ -97,7 +97,7 @@ export function CapexBarchart({ class: className = "" }) {
       .attr("x2", releaseX)
       .attr("y1", top)
       .attr("y2", baseline)
-      .attr("stroke", "#c43b3b")
+      .attr("stroke", "var(--color-graphite)")
       .attr("stroke-width", 1.5)
       .attr("stroke-dasharray", "3 4");
     releaseMarker
@@ -106,7 +106,7 @@ export function CapexBarchart({ class: className = "" }) {
       .attr("text-anchor", "middle")
       .attr("font-size", 10)
       .attr("font-weight", 600)
-      .attr("fill", "#c43b3b")
+      .attr("fill", "var(--color-graphite)")
       .text("ChatGPT first release");
 
     return () => svg.selectAll("*").remove();

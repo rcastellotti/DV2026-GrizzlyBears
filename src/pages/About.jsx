@@ -17,7 +17,7 @@ export function About() {
         <p>
           A{" "}
           <ExternalLink
-            class="text-[#002677] underline underline-offset-2 hover:no-underline"
+            class="text-graphite underline underline-offset-2 hover:no-underline"
             href="https://corsi.unige.it/en/off.f/2025/ins/83997"
           >
             Data Visualization
@@ -27,7 +27,7 @@ export function About() {
 
         <section
           aria-labelledby="methodology-title"
-          class="space-y-2 [&_a]:text-[#002677] [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:no-underline"
+          class="space-y-2 [&_a]:text-graphite [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:no-underline"
         >
           <h2 id="methodology-title" class="text-base font-bold text-ink">
             Research methodology
@@ -100,7 +100,7 @@ export function About() {
 
         <section
           aria-labelledby="technical-details-title"
-          class="space-y-2 [&_a]:text-[#002677] [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:no-underline"
+          class="space-y-2 [&_a]:text-graphite [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:no-underline"
         >
           <h2 id="technical-details-title" class="text-base font-bold text-ink">
             Technical details

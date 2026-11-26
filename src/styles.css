@@ -11,14 +11,24 @@
 /* Limit Tailwind scanning to app sources. */
 @source "./**/*.{js,jsx}";
 
-@theme {
+@theme static {
   --font-note: "Departure Mono", monospace;
   --font-mono: "Departure Mono", monospace;
-  --color-paper: #f4f1e8;
-  --color-desk: #e9e6dc;
+  --color-silver: #d8d8d0;
+  --color-machine: #a6a6a0;
+  --color-steel: #858580;
+  --color-graphite: #555550;
+  --color-beige: #b9b98f;
+  --color-olive: #89986a;
+  --color-phosphor: #63ab88;
+  --color-blue: #6a95ad;
+  --color-amber: #cda959;
+  --color-oxide: #ba746b;
+  --color-paper: var(--color-silver);
+  --color-desk: var(--color-machine);
   --color-ink: #181818;
-  --color-ink-soft: #3f3d37;
-  --color-ink-faint: #77736a;
+  --color-ink-soft: var(--color-graphite);
+  --color-ink-faint: var(--color-graphite);
 }
 
 @layer base {
@@ -26,8 +36,8 @@
     min-width: 300px;
     margin: 0;
     color: var(--color-ink);
-    background-color: #e9e6dc;
-    background-image: radial-gradient(#c7c2b5 0.65px, transparent 0.65px);
+    background-color: var(--color-desk);
+    background-image: radial-gradient(var(--color-steel) 0.65px, transparent 0.65px);
     background-size: 5px 5px;
     font-family: "Departure Mono", monospace;
     font-size: 1rem;
@@ -37,7 +47,7 @@
   }
 
   ::selection {
-    background: rgba(235, 205, 125, 0.52);
+    background: var(--color-amber);
   }
   a {
     color: inherit;
@@ -55,8 +65,8 @@
   max-width: 1240px;
   min-height: calc(100svh - 86px);
   margin-inline: auto;
-  background: #f4f1e8;
-  border: 1px solid #181818;
+  background: var(--color-paper);
+  border: 1px solid var(--color-ink);
   border-radius: 0;
   box-shadow: 6px 6px 0 rgba(24,24,24,.14);
 }
@@ -66,13 +76,13 @@
 }
 .notebook-footer {
   background-color: var(--color-paper);
-  border-bottom: 1px solid #181818;
+  border-bottom: 1px solid var(--color-ink);
 }
 
 .win95-window {
   padding: 0;
-  background: #f9f7f0;
-  border: 1px solid #181818;
+  background: var(--color-paper);
+  border: 1px solid var(--color-ink);
   border-radius: 0 !important;
   box-shadow: 4px 4px 0 rgba(24,24,24,.12) !important;
 }
@@ -83,8 +93,9 @@
   gap: 8px;
   min-height: 34px;
   padding: 4px 10px;
-  color: #f4f1e8;
-  background: #181818;
+  color: var(--color-paper);
+  background: var(--color-ink);
+  border-bottom: 1px solid var(--color-graphite);
   font-family: "Departure Mono", monospace;
   font-size: 1rem;
   font-weight: 400;
@@ -96,27 +107,27 @@
 .win95-controls { display: flex; gap: 6px; }
 .win95-controls span {
   display: grid; width: 18px; height: 18px; place-items: center;
-  color: #f4f1e8; background: transparent; border: 1px solid #f4f1e8;
+  color: inherit; background: transparent; border: 1px solid currentColor;
   font-size: 12px; line-height: 1;
 }
 .win95-window > header:not(.win95-titlebar) { padding: 16px 16px 4px !important; }
 .win95-window > figure { padding-inline: 16px !important; }
-.win95-window > :last-child { border-top: 1px dashed #9e998d; }
+.win95-window > :last-child { border-top: 1px dashed var(--color-steel); }
 .paper h1, .paper h2 { text-transform: uppercase; }
-.paper a { text-decoration-color: #a84e32; text-underline-offset: 3px; }
-.paper a:hover { color: #a84e32; }
+.paper a { text-decoration-color: var(--color-graphite); text-underline-offset: 3px; }
+.paper a:hover { color: var(--color-graphite); }
 .paper a.inline-block {
-  border: 1px solid #181818;
+  border: 1px solid var(--color-ink);
   border-radius: 0;
-  background: #181818;
-  color: #f4f1e8;
+  background: var(--color-ink);
+  color: var(--color-paper);
   text-transform: uppercase;
   letter-spacing: .04em;
 }
-.paper a.inline-block:hover { background: #a84e32; color: #fff; }
+.paper a.inline-block:hover { background: var(--color-blue); color: var(--color-ink); }
 
 .notebook {
-  --notebook-blue: #233d61;
+  --notebook-blue: var(--color-graphite);
 }
 @media (max-width: 1120px) {
   .page-pad {
