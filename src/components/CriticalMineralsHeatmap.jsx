@@ -1,30 +1,29 @@
 import { DataSource } from "./DataSource";
 import minerals from "../data/critical-minerals-2025.json";
-import { WindowTitlebar } from "./WindowTitlebar";
+import { Chart } from "./Chart";
 
 const stages = [
   { key: "mining", label: "Mining" },
   { key: "refining", label: "Refining" },
 ];
 
-export function CriticalMineralsHeatmap({ class: className = "" }) {
+export function CriticalMineralsHeatmap({ class: className = "", explainer }) {
   return (
-    <article class={`win95-window flex h-full min-w-0 flex-col overflow-hidden ${className}`}>
-      <WindowTitlebar title="Critical minerals" />
+    <Chart explainer={explainer} id="critical-minerals" title="Critical minerals" class={`flex h-full min-w-0 flex-col overflow-hidden ${className}`}>
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
-        <h3 class=" text-base font-semibold">Critical minerals production</h3>
+        <h3 class=" text-base font-bold">Critical minerals production</h3>
         <p class="mt-1 text-xs text-ink-soft">
           Leading country or region by share of global production, 2025.
         </p>
       </header>
       <figure class="flex flex-1 flex-col px-3 py-4 sm:px-5">
         <table
-          class="w-full table-fixed border-separate border-spacing-1 text-xs"
+          class="mx-auto w-[min(100%,calc(66.667%+7rem))] table-fixed border-separate border-spacing-1 text-xs"
           aria-label="Leading critical mineral producers in 2025"
         >
           <thead>
             <tr>
-              <th scope="col" class="px-1 pb-1 text-left">
+              <th scope="col" class="w-[min(28%,7rem)] px-1 pb-1 text-center">
                 Mineral
               </th>
               {stages.map(({ key, label }) => (
@@ -37,7 +36,7 @@ export function CriticalMineralsHeatmap({ class: className = "" }) {
           <tbody>
             {minerals.map(({ mineral, ...production }) => (
               <tr key={mineral}>
-                <th scope="row" class="px-1 text-left font-semibold">
+                <th scope="row" class="px-1 text-center font-bold">
                   {mineral}
                 </th>
                 {stages.map(({ key }) => {
@@ -88,6 +87,6 @@ export function CriticalMineralsHeatmap({ class: className = "" }) {
           IEA – Global Critical Minerals Outlook 2026
         </a>
       </DataSource>
-    </article>
+    </Chart>
   );
 }

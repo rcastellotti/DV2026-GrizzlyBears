@@ -9,13 +9,13 @@ import {
   select,
 } from "d3";
 import { DataSource } from "./DataSource";
-import { WindowTitlebar } from "./WindowTitlebar";
+import { Chart } from "./Chart";
 import regions from "../data/electricity-generation-totals.json";
 
 const years = regions[0].years.map(({ year }) => year);
 const formatTwh = format(",.1f");
 
-export function ElectricityGenerationTotals({ class: className = "" }) {
+export function ElectricityGenerationTotals({ class: className = "", explainer }) {
   const plot = useRef(null);
   const [width, setWidth] = useState(0);
 
@@ -89,10 +89,9 @@ export function ElectricityGenerationTotals({ class: className = "" }) {
   }, [width]);
 
   return (
-    <article class={`win95-window min-w-0 overflow-hidden ${className}`}>
-      <WindowTitlebar title="Electricity generation totals" />
+    <Chart explainer={explainer} id="electricity-generation-totals" title="Electricity generation totals" class={`min-w-0 overflow-hidden ${className}`}>
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
-        <h3 class=" text-base font-semibold">Total electricity production</h3>
+        <h3 class=" text-base font-bold">Total electricity production</h3>
         <p class="mt-1 text-xs text-ink-soft">
           Domestic electricity generation in terawatt-hours (TWh) in{" "}
           {years.join(", ")}.
@@ -124,6 +123,6 @@ export function ElectricityGenerationTotals({ class: className = "" }) {
           Ember – Yearly Electricity Data (2026)
         </a>
       </DataSource>
-    </article>
+    </Chart>
   );
 }

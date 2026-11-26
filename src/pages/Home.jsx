@@ -29,7 +29,7 @@ export function Home() {
 
         <div class="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
           <a
-            class="inline-block px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-graphite"
+            class="inline-block px-4 py-2 text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-graphite"
             href={`${basePath}assignment1/`}
           >
             Open the notebook
@@ -37,7 +37,7 @@ export function Home() {
           <p class="text-xs text-ink-faint">
             or{" "}
             <a
-              class="text-graphite underline underline-offset-2 hover:no-underline"
+              class="text-ink-soft underline underline-offset-2 hover:no-underline"
               href={`${basePath}about/`}
             >
               learn about the project

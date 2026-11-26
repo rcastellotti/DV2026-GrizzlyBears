@@ -17,7 +17,7 @@ export function About() {
         <p>
           A{" "}
           <ExternalLink
-            class="text-graphite underline underline-offset-2 hover:no-underline"
+            class="text-ink-soft underline underline-offset-2 hover:no-underline"
             href="https://corsi.unige.it/en/off.f/2025/ins/83997"
           >
             Data Visualization
@@ -27,7 +27,7 @@ export function About() {
 
         <section
           aria-labelledby="methodology-title"
-          class="space-y-2 [&_a]:text-graphite [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:no-underline"
+          class="space-y-2 [&_a]:text-ink-soft [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:no-underline"
         >
           <h2 id="methodology-title" class="text-base font-bold text-ink">
             Research methodology
@@ -75,7 +75,7 @@ export function About() {
             We work with the data we can get hold of and link to the sources,
             which we additionally report below, for every visualization.
           </p>
-          <p class="font-semibold text-ink">Resources</p>
+          <p class="font-bold text-ink">Resources</p>
           <ul class="list-disc space-y-1 pl-5">
             <li>
               <ExternalLink href="https://example.com/lorem-ipsum">
@@ -100,7 +100,7 @@ export function About() {
 
         <section
           aria-labelledby="technical-details-title"
-          class="space-y-2 [&_a]:text-graphite [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:no-underline"
+          class="space-y-2 [&_a]:text-ink-soft [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:no-underline"
         >
           <h2 id="technical-details-title" class="text-base font-bold text-ink">
             Technical details

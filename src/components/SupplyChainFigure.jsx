@@ -4,17 +4,17 @@ import aiBear from "../assets/ai-bear.png";
 const headquartersFlags = {
   "United States": "🇺🇸",
   "United Kingdom": "🇬🇧",
-  "Spain": "🇪🇸",
-  "Germany": "🇩🇪",
-  "Taiwan": "🇹🇼",
+  Spain: "🇪🇸",
+  Germany: "🇩🇪",
+  Taiwan: "🇹🇼",
   "South Korea": "🇰🇷",
-  "Japan": "🇯🇵",
-  "Netherlands": "🇳🇱",
+  Japan: "🇯🇵",
+  Netherlands: "🇳🇱",
 };
 
 function Company({ countries, children }) {
   return (
-    <span class="whitespace-nowrap">
+    <span class="font-bold">
       {countries.map((country) => (
         <span
           key={country}
@@ -42,7 +42,8 @@ export function SupplyChainFigure() {
     function dismiss(event) {
       if (event.key !== "Escape") return;
 
-      if (popup.current.contains(document.activeElement)) trigger.current.focus();
+      if (popup.current.contains(document.activeElement))
+        trigger.current.focus();
       setOpen(false);
     }
 
@@ -56,7 +57,10 @@ export function SupplyChainFigure() {
         if (event.pointerType === "mouse") setOpen(true);
       }}
       onPointerLeave={(event) => {
-        if (event.pointerType === "mouse" && !popup.current.contains(document.activeElement)) {
+        if (
+          event.pointerType === "mouse" &&
+          !popup.current.contains(document.activeElement)
+        ) {
           setOpen(false);
         }
       }}
@@ -85,123 +89,154 @@ export function SupplyChainFigure() {
         ref={popup}
         id="supply-chain-popup"
         hidden={!open}
-        class="absolute top-full inset-x-[calc(-1px-var(--popup-padding))] z-20 max-w-sm pt-3 [--popup-padding:0.75rem] sm:[--popup-padding:1rem]"
+        class="absolute top-full left-[calc(-1px-var(--popup-padding))] z-20 w-max max-w-[calc(100%+2px+2*var(--popup-padding))] pt-1 [--popup-padding:0.75rem] sm:[--popup-padding:1rem]"
       >
         <div class="max-h-[70svh] space-y-3 overflow-y-auto rounded border border-ink/25 bg-paper p-(--popup-padding) text-sm leading-relaxed text-ink-soft shadow-lg">
           <h2 class="text-base font-bold text-ink">
             What is behind this image?
           </h2>
-          <div class="space-y-2 text-xs text-ink-soft [&_a]:underline [&_a]:underline-offset-2">
-            <p>
-            <Company countries={["United Kingdom", "Spain"]}>
-              <a href="https://www.ferroglobe.com/news-releases/news-release-details/ferroglobe-acquires-strategic-high-purity-quartz-mine-us">
-                Ferroglobe
-              </a>
-            </Company>{" "}
-            mines quartz →{" "}
-            <Company countries={["Germany"]}>
-              <a href="https://reports.wacker.com/2024/annual-report/combined-management-report/governance/markets-positions.html">
-                Wacker
-              </a>
-            </Company>{" "}
-            makes polysilicon → silicon wafers →{" "}
-            <Company countries={["United States"]}>
-              <a href="https://www.nvidia.com/en-us/data-center/gb200-nvl72/">
-                NVIDIA
-              </a>
-            </Company> designs GB200 systems.
-            </p>
-            <p>
-            <Company countries={["Taiwan"]}>
-              <a href="https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era/">
-                TSMC
-              </a>
-            </Company>{" "}
-            fabricates GPUs →{" "}
-            <Company countries={["United Kingdom"]}>
-              <a href="https://www.nvidia.com/en-us/data-center/gb200-nvl72/">
-                Arm
-              </a>
-            </Company>{" "}
-            designs CPU cores →{" "}
-            <Company countries={["South Korea"]}>
-              <a href="https://news.skhynix.com/en/sk-hynix-showcases-hbm4-next-gen-ai-memory-at-computex-taipei-2025/">
-                SK hynix
-              </a>
-            </Company>{" "}
-            +{" "}
-            <Company countries={["United States"]}>
-              <a href="https://investors.micron.com/node/48606/pdf">
-                Micron
-              </a>
-            </Company>{" "}
-            make GPU memory → TSMC packages chips and memory together.
-            </p>
-            <p>
-            Specialist suppliers keep the fabs running: 
-            <Company countries={["Japan"]}>
-              <a href="https://pr.tsmc.com/japanese/news/1697">
-                SUMCO
-              </a>
-            </Company>{" "}
-            makes silicon wafers →{" "}
-            <Company countries={["United States"]}>
-              <a href="https://pr.tsmc.com/japanese/news/1697">
-                Applied Materials
-              </a>
-            </Company>{" "}
-            makes deposition tools →{" "}
-            <Company countries={["United States"]}>
-              <a href="https://pr.tsmc.com/japanese/news/1697">
-                Lam Research
-              </a>
-            </Company>{" "}
-            makes etching tools →{" "}
-            <Company countries={["United States"]}>
-              <a href="https://pr.tsmc.com/japanese/news/1697">
-                KLA
-              </a>
-            </Company>{" "}
-            makes inspection tools →{" "}
-            <Company countries={["Netherlands"]}>
-              <a href="https://pr.tsmc.com/japanese/news/1697">
-                ASML
-              </a>
-            </Company>{" "}
-            builds lithography machines →{" "}
-            <Company countries={["Germany"]}>
-              <a href="https://www.zeiss.com/semiconductor-manufacturing-technology/inspiring-technology/euv-lithography.html">
-                Carl Zeiss SMT
-              </a>
-            </Company>{" "}
-            makes mirrors;{" "}
-            <Company countries={["Germany"]}>
-              <a href="https://www.zeiss.com/semiconductor-manufacturing-technology/inspiring-technology/euv-lithography.html">
-                TRUMPF
-              </a>
-            </Company>
-            makes lasers.
-            </p>
-            <p>
-            <Company countries={["United States"]}>
-              <a href="https://www.dell.com/en-us/infohub/articles/poweredge-xe8712-with-nvidia-gb200-a-high-density-foundational-server-for-rack-scale-ai-2">
-                Dell
-              </a>
-            </Company>{" "}
-            builds GB200 servers →{" "}
-            <Company countries={["United States"]}>
-              <a href="https://investors.vertiv.com/news/news-details/2024/Vertiv-Codevelops-with-NVIDIA-Complete-Power-and-Cooling-Blueprint-for-NVIDIA-GB200-NVL72-Platform/default.aspx">
-                Vertiv
-              </a>
-            </Company>{" "}
-            designs power and cooling systems → at Stargate in Abilene,{" "}
-            <Company countries={["United States"]}>
-              <a href="https://openai.com/index/stargate-advances-with-partnership-with-oracle/">
-                Oracle
-              </a>
-            </Company>{" "}
-            delivers GB200 racks → OpenAI runs AI workloads on Oracle’s cloud.
-            </p>
+          <div class="space-y-2 text-[0.6875rem] text-ink-soft sm:text-xs [&_a]:underline [&_a]:underline-offset-2">
+            <p>This image was generated by OpenAI’s ChatGPT, before that:</p>
+            <ul class="space-y-1">
+              <li>
+                <Company countries={["United Kingdom", "Spain"]}>
+                  <a href="https://www.ferroglobe.com/news-releases/news-release-details/ferroglobe-acquires-strategic-high-purity-quartz-mine-us">
+                    Ferroglobe
+                  </a>
+                </Company>{" "}
+                mined quartz.
+              </li>
+              <li>
+                <Company countries={["Germany"]}>
+                  <a href="https://reports.wacker.com/2024/annual-report/combined-management-report/governance/markets-positions.html">
+                    Wacker
+                  </a>
+                </Company>{" "}
+                made wafer-grade polysilicon.
+              </li>
+              <li>
+                <Company countries={["United States"]}>
+                  <a href="https://www.nvidia.com/en-us/data-center/gb200-nvl72/">
+                    NVIDIA
+                  </a>
+                </Company>{" "}
+                designed GB200 systems.
+              </li>
+            </ul>
+            <ul class="space-y-1">
+              <li>
+                <Company countries={["Taiwan"]}>
+                  <a href="https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era/">
+                    TSMC
+                  </a>
+                </Company>{" "}
+                made and packaged GPUs.
+              </li>
+              <li>
+                <Company countries={["United Kingdom"]}>
+                  <a href="https://www.nvidia.com/en-us/data-center/gb200-nvl72/">
+                    Arm
+                  </a>
+                </Company>{" "}
+                designed CPU cores.
+              </li>
+              <li>
+                <Company countries={["South Korea"]}>
+                  <a href="https://news.skhynix.com/en/sk-hynix-showcases-hbm4-next-gen-ai-memory-at-computex-taipei-2025/">
+                    SK hynix
+                  </a>
+                </Company>{" "}
+                made GPU memory.
+              </li>
+              <li>
+                <Company countries={["United States"]}>
+                  <a href="https://investors.micron.com/node/48606/pdf">
+                    Micron
+                  </a>
+                </Company>{" "}
+                made GPU memory.
+              </li>
+            </ul>
+            <ul class="space-y-1">
+              <li>
+                <Company countries={["Japan"]}>
+                  <a href="https://pr.tsmc.com/japanese/news/1697">SUMCO</a>
+                </Company>{" "}
+                made silicon wafers.
+              </li>
+              <li>
+                <Company countries={["United States"]}>
+                  <a href="https://pr.tsmc.com/japanese/news/1697">
+                    Applied Materials
+                  </a>
+                </Company>{" "}
+                made deposition tools.
+              </li>
+              <li>
+                <Company countries={["United States"]}>
+                  <a href="https://pr.tsmc.com/japanese/news/1697">
+                    Lam Research
+                  </a>
+                </Company>{" "}
+                made etching tools.
+              </li>
+              <li>
+                <Company countries={["United States"]}>
+                  <a href="https://pr.tsmc.com/japanese/news/1697">KLA</a>
+                </Company>{" "}
+                made inspection tools.
+              </li>
+              <li>
+                <Company countries={["Netherlands"]}>
+                  <a href="https://pr.tsmc.com/japanese/news/1697">ASML</a>
+                </Company>{" "}
+                built lithography machines.
+              </li>
+              <li>
+                <Company countries={["Germany"]}>
+                  <a href="https://www.zeiss.com/semiconductor-manufacturing-technology/inspiring-technology/euv-lithography.html">
+                    Carl Zeiss SMT
+                  </a>
+                </Company>{" "}
+                made mirrors.
+              </li>
+              <li>
+                <Company countries={["Germany"]}>
+                  <a href="https://www.zeiss.com/semiconductor-manufacturing-technology/inspiring-technology/euv-lithography.html">
+                    TRUMPF
+                  </a>
+                </Company>{" "}
+                made lasers.
+              </li>
+              <li>
+                <Company countries={["United States"]}>
+                  <a href="https://www.dell.com/en-us/infohub/articles/poweredge-xe8712-with-nvidia-gb200-a-high-density-foundational-server-for-rack-scale-ai-2">
+                    Dell
+                  </a>
+                </Company>{" "}
+                built GB200 servers.
+              </li>
+              <li>
+                <Company countries={["United States"]}>
+                  <a href="https://investors.vertiv.com/news/news-details/2024/Vertiv-Codevelops-with-NVIDIA-Complete-Power-and-Cooling-Blueprint-for-NVIDIA-GB200-NVL72-Platform/default.aspx">
+                    Vertiv
+                  </a>
+                </Company>{" "}
+                designed power and cooling.
+              </li>
+              <li>
+                <Company countries={["United States"]}>
+                  <a href="https://openai.com/index/stargate-advances-with-partnership-with-oracle/">
+                    Oracle
+                  </a>
+                </Company>{" "}
+                supplied Stargate’s GB200 racks.
+              </li>
+              <li>
+                <Company countries={["United States"]}>OpenAI</Company> ran AI
+                on Oracle Cloud.
+              </li>
+            </ul>
           </div>
         </div>
       </div>

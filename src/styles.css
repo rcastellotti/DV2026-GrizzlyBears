@@ -27,8 +27,8 @@
   --color-paper: var(--color-silver);
   --color-desk: var(--color-machine);
   --color-ink: #181818;
-  --color-ink-soft: var(--color-graphite);
-  --color-ink-faint: var(--color-graphite);
+  --color-ink-soft: #292927;
+  --color-ink-faint: #363633;
 }
 
 @layer base {
@@ -79,14 +79,14 @@
   border-bottom: 1px solid var(--color-ink);
 }
 
-.win95-window {
+.chart {
   padding: 0;
   background: var(--color-paper);
   border: 1px solid var(--color-ink);
   border-radius: 0 !important;
   box-shadow: 4px 4px 0 rgba(24,24,24,.12) !important;
 }
-.win95-titlebar {
+.chart-titlebar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -104,18 +104,24 @@
 }
 .paper h1 { font-family: "Departure Mono", monospace; letter-spacing: -.04em; }
 .paper svg text { font-family: "Departure Mono", monospace; }
-.win95-controls { display: flex; gap: 6px; }
-.win95-controls span {
-  display: grid; width: 18px; height: 18px; place-items: center;
-  color: inherit; background: transparent; border: 1px solid currentColor;
-  font-size: 12px; line-height: 1;
+.paper .chart-permalink {
+  color: inherit;
+  font-size: .75rem;
+  text-transform: none;
+  text-decoration: underline;
+  text-decoration-color: currentColor;
 }
-.win95-window > header:not(.win95-titlebar) { padding: 16px 16px 4px !important; }
-.win95-window > figure { padding-inline: 16px !important; }
-.win95-window > :last-child { border-top: 1px dashed var(--color-steel); }
+.paper .chart-permalink:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.chart-permalink:focus-visible { outline: 1px solid currentColor; outline-offset: 2px; }
+:is(.chart, .chart-content) > header { padding: 16px 16px 4px !important; }
+:is(.chart, .chart-content) > figure { padding-inline: 16px !important; }
+:is(.chart, .chart-content) > .data-source { border-top: 1px dashed var(--color-steel); }
 .paper h1, .paper h2 { text-transform: uppercase; }
 .paper a { text-decoration-color: var(--color-graphite); text-underline-offset: 3px; }
-.paper a:hover { color: var(--color-graphite); }
+.paper a:hover { color: var(--color-ink); }
 .paper a.inline-block {
   border: 1px solid var(--color-ink);
   border-radius: 0;

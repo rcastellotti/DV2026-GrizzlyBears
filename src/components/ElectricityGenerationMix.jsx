@@ -1,5 +1,5 @@
 import { DataSource } from "./DataSource";
-import { WindowTitlebar } from "./WindowTitlebar";
+import { Chart } from "./Chart";
 import { useEffect, useRef, useState } from "preact/hooks";
 import {
   axisBottom,
@@ -21,7 +21,7 @@ const regions = generationMix.regions.map(({ name, years: records }) => ({
   layers: stackShares(records),
 }));
 
-export function ElectricityGenerationMix({ class: className = "" }) {
+export function ElectricityGenerationMix({ class: className = "", explainer }) {
   const plot = useRef(null);
   const [width, setWidth] = useState(0);
 
@@ -57,7 +57,7 @@ export function ElectricityGenerationMix({ class: className = "" }) {
         .attr("x", left)
         .attr("y", -10)
         .attr("font-size", 11)
-        .attr("font-weight", 600)
+        .attr("font-weight", 700)
         .attr("fill", "currentColor")
         .text(region.name);
 
@@ -141,10 +141,9 @@ export function ElectricityGenerationMix({ class: className = "" }) {
   }, [width]);
 
   return (
-    <article class={`win95-window min-w-0 overflow-hidden ${className}`}>
-      <WindowTitlebar title="Electricity generation mix" />
+    <Chart explainer={explainer} id="electricity-generation-mix" title="Electricity generation mix" class={`min-w-0 overflow-hidden ${className}`}>
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
-        <h3 class=" text-base font-semibold">
+        <h3 class=" text-base font-bold">
           Electricity production by source
         </h3>
         <p class="mt-1 text-xs text-ink-soft">
@@ -177,6 +176,6 @@ export function ElectricityGenerationMix({ class: className = "" }) {
           Ember – Yearly Electricity Data (2026)
         </a>
       </DataSource>
-    </article>
+    </Chart>
   );
 }

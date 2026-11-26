@@ -20,7 +20,7 @@ export function AssignmentOne() {
         <ElectricityGenerationTotals class="mx-auto w-full max-w-4xl" />
         <ElectricityGenerationMix class="mx-auto w-full max-w-4xl" />
       </div>
-      <nav class="mt-8 flex justify-start border-t border-ink/25 pt-4 text-sm font-semibold">
+      <nav class="mt-8 flex justify-start border-t border-ink/25 pt-4 text-sm font-bold">
         <a
           class="underline underline-offset-2 hover:no-underline"
           href={basePath}
