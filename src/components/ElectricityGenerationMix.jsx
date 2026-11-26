@@ -20,6 +20,8 @@ const regions = generationMix.regions.map(({ name, years: records }) => ({
   name,
   layers: stackShares(records),
 }));
+const panelStride = 212;
+const chartHeight = panelStride * regions.length + 8;
 
 export function ElectricityGenerationMix({ class: className = "", explainer }) {
   const plot = useRef(null);
@@ -38,24 +40,23 @@ export function ElectricityGenerationMix({ class: className = "", explainer }) {
 
     const svg = select(plot.current);
     const panelHeight = 164;
-    const panelStride = 204;
+    const top = 40;
     const left = 44;
     const right = width - 12;
     const plotWidth = right - left;
-    const height = panelStride * regions.length;
     const x = scaleBand(years, [left, right]).padding(0.5);
     const y = scaleLinear([0, 100], [panelHeight, 0]);
     const shareTicks = [0, 25, 50, 75, 100];
-    svg.attr("viewBox", `0 0 ${width} ${height}`).attr("height", height);
+    svg.attr("viewBox", `0 0 ${width} ${chartHeight}`);
 
     for (const [index, region] of regions.entries()) {
       const panel = svg
         .append("g")
-        .attr("transform", `translate(0,${24 + panelStride * index})`);
+        .attr("transform", `translate(0,${top + panelStride * index})`);
       panel
         .append("text")
         .attr("x", left)
-        .attr("y", -10)
+        .attr("y", -23)
         .attr("font-size", 11)
         .attr("font-weight", 700)
         .attr("fill", "currentColor")
@@ -154,7 +155,7 @@ export function ElectricityGenerationMix({ class: className = "", explainer }) {
         <svg
           ref={plot}
           class="block w-full"
-          height="612"
+          height={chartHeight}
           role="img"
           aria-label={`100% stacked bars by electricity source for the United States, China, and the EU in ${years.join(", ")}.`}
         />

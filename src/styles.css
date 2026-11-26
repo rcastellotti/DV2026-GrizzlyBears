@@ -1,19 +1,10 @@
 @import "tailwindcss" source(none);
 
-@font-face {
-  font-family: "Departure Mono";
-  src: url("https://cdn.jsdelivr.net/gh/rektdeckard/departure-mono@main/public/assets/DepartureMono-Regular.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
 /* Limit Tailwind scanning to app sources. */
 @source "./**/*.{js,jsx}";
 
 @theme static {
-  --font-note: "Departure Mono", monospace;
-  --font-mono: "Departure Mono", monospace;
+  --font-sans: "Overpass", system-ui, sans-serif;
   --color-silver: #d8d8d0;
   --color-machine: #a6a6a0;
   --color-steel: #858580;
@@ -39,7 +30,7 @@
     background-color: var(--color-desk);
     background-image: radial-gradient(var(--color-steel) 0.65px, transparent 0.65px);
     background-size: 5px 5px;
-    font-family: "Departure Mono", monospace;
+    font-family: var(--font-sans);
     font-size: 1rem;
     line-height: 1.4;
     -webkit-font-smoothing: auto;
@@ -96,14 +87,11 @@
   color: var(--color-paper);
   background: var(--color-ink);
   border-bottom: 1px solid var(--color-graphite);
-  font-family: "Departure Mono", monospace;
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: .04em;
   text-transform: uppercase;
 }
-.paper h1 { font-family: "Departure Mono", monospace; letter-spacing: -.04em; }
-.paper svg text { font-family: "Departure Mono", monospace; }
 .paper .chart-permalink {
   color: inherit;
   font-size: .75rem;
@@ -119,7 +107,9 @@
 :is(.chart, .chart-content) > header { padding: 16px 16px 4px !important; }
 :is(.chart, .chart-content) > figure { padding-inline: 16px !important; }
 :is(.chart, .chart-content) > .data-source { border-top: 1px dashed var(--color-steel); }
-.paper h1, .paper h2 { text-transform: uppercase; }
+.paper h1, .paper h2 {
+  text-transform: uppercase;
+}
 .paper a { text-decoration-color: var(--color-graphite); text-underline-offset: 3px; }
 .paper a:hover { color: var(--color-ink); }
 .paper a.inline-block {
