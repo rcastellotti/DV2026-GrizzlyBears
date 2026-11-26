@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "preact/hooks";
 import { axisBottom, axisLeft, max, scaleBand, scaleLinear, select } from "d3";
 import quarterlyCapex from "../data/quarterly-capex.json";
 
-export function CapexBarchart() {
+export function CapexBarchart({ class: className = "" }) {
   const title =
     "Hyperscaler aggregate capital spending (MSFT, GOOG, AMZN, META, ORCL)";
   const description =
@@ -86,18 +86,40 @@ export function CapexBarchart() {
           `${datum[categoryKey]} · ${valuePrefix}${datum[valueKey].toFixed(1)}${valueSuffix}`,
       );
 
+    const releaseX = x(highlightAfter) - (x.step() - x.bandwidth()) / 2;
+    const releaseMarker = svg
+      .append("g")
+      .attr("pointer-events", "none");
+    releaseMarker
+      .append("line")
+      .attr("x1", releaseX)
+      .attr("x2", releaseX)
+      .attr("y1", top)
+      .attr("y2", baseline)
+      .attr("stroke", "#c43b3b")
+      .attr("stroke-width", 1.5)
+      .attr("stroke-dasharray", "3 4");
+    releaseMarker
+      .append("text")
+      .attr("transform", `translate(${releaseX - 5},${(top + baseline) / 2}) rotate(-90)`)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 10)
+      .attr("font-weight", 600)
+      .attr("fill", "#c43b3b")
+      .text("ChatGPT first release");
+
     return () => svg.selectAll("*").remove();
   }, [size]);
 
   return (
-    <article class="flex h-full min-w-0 flex-col overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b]">
+    <article class={`flex h-full min-w-0 flex-col overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b] ${className}`}>
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
         <h3 class=" text-base font-semibold">{title}</h3>
         <p class="mt-1 text-xs text-ink-soft">{description}</p>
       </header>
 
       <figure class="flex min-h-0 flex-1 flex-col px-3 pb-4 sm:px-5">
-        <div ref={plotContainer} class="min-h-0 flex-1">
+        <div ref={plotContainer} class="min-h-[24rem] flex-1">
           <svg
             ref={svgRef}
             class="block h-full w-full"

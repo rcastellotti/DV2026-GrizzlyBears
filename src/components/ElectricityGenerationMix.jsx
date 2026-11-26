@@ -20,7 +20,7 @@ const regions = generationMix.regions.map(({ name, years: records }) => ({
   layers: stackShares(records),
 }));
 
-export function ElectricityGenerationMix() {
+export function ElectricityGenerationMix({ class: className = "" }) {
   const plot = useRef(null);
   const [width, setWidth] = useState(0);
 
@@ -68,17 +68,49 @@ export function ElectricityGenerationMix() {
             .tickValues(shareTicks)
             .tickSize(-plotWidth)
             .tickPadding(5)
-            .tickFormat((share) => `${share}%`),
+            .tickFormat((share) =>
+              share === 0 || share === 100 ? `${share}%` : "",
+            ),
         )
         .call((axis) => axis.select(".domain").remove())
         .call((axis) =>
-          axis.selectAll(".tick line").attr("stroke-opacity", 0.15),
+          axis
+            .selectAll(".tick line")
+            .attr("stroke-opacity", 0.07),
+        )
+        .call((axis) =>
+          axis.selectAll(".tick text").attr("fill-opacity", 0.55),
         );
 
       panel
-        .append("g")
-        .attr("transform", `translate(0,${panelHeight})`)
-        .call(axisBottom(x).tickSizeOuter(0));
+        .append("line")
+        .attr("x1", left)
+        .attr("x2", right)
+        .attr("y1", panelHeight)
+        .attr("y2", panelHeight)
+        .attr("stroke", "currentColor")
+        .attr("stroke-opacity", 0.3);
+
+      if (!region.name.startsWith("China")) {
+        const yearsAxis = panel
+          .append("g")
+          .attr(
+            "transform",
+            region.name.startsWith("United States")
+              ? "translate(0,0)"
+              : `translate(0,${panelHeight})`,
+          )
+          .call(
+            region.name.startsWith("United States")
+              ? axisBottom(x).tickSize(0).tickPadding(0)
+              : axisBottom(x).tickSizeOuter(0),
+          );
+
+        if (region.name.startsWith("United States")) {
+          yearsAxis.selectAll(".tick text").attr("dy", "-0.45em");
+          yearsAxis.select(".domain").remove();
+        }
+      }
 
       const layers = panel
         .append("g")
@@ -108,7 +140,7 @@ export function ElectricityGenerationMix() {
   }, [width]);
 
   return (
-    <article class="min-w-0 overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b]">
+    <article class={`min-w-0 overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b] ${className}`}>
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
         <h3 class=" text-base font-semibold">
           Electricity production by source
@@ -125,7 +157,7 @@ export function ElectricityGenerationMix() {
           role="img"
           aria-label={`100% stacked bars by electricity source for the United States, China, and the EU in ${years.join(", ")}.`}
         />
-        <figcaption class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-ink-soft">
+        <figcaption class="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-ink-soft">
           {generationMix.sources.map(({ name, color }) => (
             <span key={name} class="inline-flex items-center gap-1.5">
               <span

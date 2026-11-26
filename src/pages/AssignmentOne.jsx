@@ -13,22 +13,12 @@ export function AssignmentOne() {
         <h2 class="text-2xl font-bold">Assignment 1</h2>
       </div>
 
-      <div class="grid grid-cols-12 gap-5">
-        <div class="col-span-12 min-h-128">
-          <CapexBarchart />
-        </div>
-        <div class="col-span-12 min-h-96 lg:col-span-6">
-          <WaffleLitography />
-        </div>
-        <div class="col-span-12 lg:col-span-6">
-          <CriticalMineralsHeatmap />
-        </div>
-        <div class="col-span-12 lg:col-span-6">
-          <ElectricityGenerationMix />
-        </div>
-        <div class="col-span-12 lg:col-span-6">
-          <ElectricityGenerationTotals />
-        </div>
+      <div class="flex flex-col items-center gap-5">
+        <CapexBarchart class="mx-auto w-full max-w-4xl" />
+        <WaffleLitography class="mx-auto w-full max-w-4xl" />
+        <CriticalMineralsHeatmap class="mx-auto w-full max-w-4xl" />
+        <ElectricityGenerationTotals class="mx-auto w-full max-w-4xl" />
+        <ElectricityGenerationMix class="mx-auto w-full max-w-4xl" />
       </div>
       <nav class="mt-8 flex justify-start border-t border-ink/25 pt-4 text-sm font-semibold">
         <a

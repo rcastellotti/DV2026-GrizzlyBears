@@ -14,7 +14,7 @@ import regions from "../data/electricity-generation-totals.json";
 const years = regions[0].years.map(({ year }) => year);
 const formatTwh = format(",.1f");
 
-export function ElectricityGenerationTotals() {
+export function ElectricityGenerationTotals({ class: className = "" }) {
   const plot = useRef(null);
   const [width, setWidth] = useState(0);
 
@@ -56,7 +56,10 @@ export function ElectricityGenerationTotals() {
       )
       .call((axis) => axis.select(".domain").remove())
       .call((axis) =>
-        axis.selectAll(".tick line").attr("stroke-opacity", 0.15),
+        axis.selectAll(".tick line").attr("stroke-opacity", 0.07),
+      )
+      .call((axis) =>
+        axis.selectAll(".tick text").attr("fill-opacity", 0.55),
       );
     svg
       .append("g")
@@ -85,7 +88,7 @@ export function ElectricityGenerationTotals() {
   }, [width]);
 
   return (
-    <article class="min-w-0 overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b]">
+    <article class={`min-w-0 overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b] ${className}`}>
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
         <h3 class=" text-base font-semibold">Total electricity production</h3>
         <p class="mt-1 text-xs text-ink-soft">
