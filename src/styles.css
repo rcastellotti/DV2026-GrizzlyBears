@@ -3,14 +3,45 @@
 /* Limit Tailwind scanning to app sources. */
 @source "./**/*.{js,jsx}";
 
-@theme {
-  --font-note: "Fira Sans", Arial, sans-serif;
-  --font-mono: "Fira Sans Mono", "Fira Mono", monospace;
-  --color-paper: #faf7ed;
-  --color-desk: #d9d9d6;
-  --color-ink: #25282a;
-  --color-ink-soft: #45494b;
-  --color-ink-faint: #747779;
+@font-face {
+  font-family: "Helix Mono";
+  src: url("/fonts/helix-mono/HelixMono-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Helix Mono";
+  src: url("/fonts/helix-mono/HelixMono-Medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Helix Mono";
+  src: url("/fonts/helix-mono/HelixMono-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@theme static {
+  --font-sans: "Helix Mono", ui-monospace, monospace;
+  --color-silver: #d8d8d0;
+  --color-machine: #a6a6a0;
+  --color-steel: #858580;
+  --color-graphite: #555550;
+  --color-beige: #b9b98f;
+  --color-olive: #89986a;
+  --color-phosphor: #63ab88;
+  --color-blue: #6a95ad;
+  --color-amber: #cda959;
+  --color-oxide: #ba746b;
+  --color-paper: #f8f7f3;
+  --color-desk: #f4f3ef;
+  --color-ink: #181818;
+  --color-ink-soft: #292927;
+  --color-ink-faint: #363633;
 }
 
 @layer base {
@@ -19,22 +50,17 @@
     margin: 0;
     color: var(--color-ink);
     background-color: var(--color-desk);
-    background-image:
-      radial-gradient(
-        circle at 16% 10%,
-        rgba(255, 252, 244, 0.35),
-        transparent 34%
-      ),
-      linear-gradient(118deg, #dcd5c8 0%, #d2cabc 52%, #d8d1c4 100%);
-    font-family: var(--font-note);
+    background-image: radial-gradient(#c9c8c2 0.65px, transparent 0.65px);
+    background-size: 5px 5px;
+    font-family: var(--font-sans);
     font-size: 1rem;
     line-height: 1.4;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: auto;
+    text-rendering: auto;
   }
 
   ::selection {
-    background: rgba(235, 205, 125, 0.52);
+    background: var(--color-amber);
   }
   a {
     color: inherit;
@@ -42,63 +68,89 @@
 }
 
 .site-shell {
-  padding: 34px 22px 52px;
+  padding: 28px 22px 52px;
 }
 .paper {
-  --margin-x: 68px;
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1500px;
+  max-width: 1240px;
   min-height: calc(100svh - 86px);
   margin-inline: auto;
-  background-color: var(--color-paper);
-  background-image:
-    linear-gradient(
-      90deg,
-      transparent 0,
-      transparent calc(var(--margin-x) - 1px),
-      rgba(200, 16, 46, 0.23) calc(var(--margin-x) - 1px),
-      rgba(200, 16, 46, 0.23) var(--margin-x),
-      transparent var(--margin-x)
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0,
-      transparent 23px,
-      rgba(0, 38, 119, 0.065) 23px,
-      rgba(0, 38, 119, 0.065) 24px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 23px,
-      rgba(0, 38, 119, 0.065) 23px,
-      rgba(0, 38, 119, 0.065) 24px
-    );
-  border: 1px solid rgba(58, 52, 40, 0.18);
-  border-radius: 2px;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.58) inset,
-    0 18px 46px rgba(58, 49, 36, 0.15),
-    0 2px 5px rgba(58, 49, 36, 0.08);
+  background: var(--color-paper);
+  border: 1px solid var(--color-ink);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 rgba(24,24,24,.14);
 }
 .page-pad {
-  padding-left: 108px;
-  padding-right: 64px;
+  padding-left: 72px;
+  padding-right: 72px;
 }
 .notebook-footer {
   background-color: var(--color-paper);
+  border-bottom: 1px solid var(--color-ink);
 }
 
+.chart {
+  padding: 0;
+  background: var(--color-paper);
+  border: 1px solid var(--color-ink);
+  border-radius: 0 !important;
+  box-shadow: 4px 4px 0 rgba(24,24,24,.12) !important;
+}
+.chart-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 34px;
+  padding: 4px 10px;
+  color: var(--color-paper);
+  background: var(--color-ink);
+  border-bottom: 1px solid var(--color-graphite);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.paper .chart-permalink {
+  color: inherit;
+  font-size: .75rem;
+  text-transform: none;
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
+.paper .chart-permalink:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.chart-permalink:focus-visible { outline: 1px solid currentColor; outline-offset: 2px; }
+:is(.chart, .chart-content) > header { padding: 16px 16px 4px !important; }
+:is(.chart, .chart-content) > figure { padding-inline: 16px !important; }
+:is(.chart, .chart-content) > .data-source { border-top: 1px dashed var(--color-steel); }
+.paper h1, .paper h2 {
+  text-transform: uppercase;
+}
+.paper a { text-decoration-color: var(--color-graphite); text-underline-offset: 3px; }
+.paper a:hover { color: var(--color-ink); }
+.paper a.inline-block {
+  border: 1px solid var(--color-ink);
+  border-radius: 0;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.paper a.inline-block:hover { background: var(--color-blue); color: var(--color-ink); }
+
 .notebook {
-  --notebook-blue: #233d61;
+  --notebook-blue: var(--color-graphite);
 }
 @media (max-width: 1120px) {
   .page-pad {
-    padding-left: 94px;
-    padding-right: 46px;
+    padding-left: 52px;
+    padding-right: 52px;
   }
 }
 @media (max-width: 920px) {
@@ -110,8 +162,8 @@
     --margin-x: 52px;
   }
   .page-pad {
-    padding-left: 78px;
-    padding-right: 32px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 @media (max-width: 620px) {
@@ -120,13 +172,12 @@
   }
   .paper {
     min-height: 100svh;
-    --margin-x: 30px;
     border-inline: 0;
     border-radius: 0;
     box-shadow: none;
   }
   .page-pad {
-    padding-left: 48px;
+    padding-left: 18px;
     padding-right: 18px;
   }
 }

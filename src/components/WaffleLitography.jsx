@@ -1,9 +1,10 @@
 import { DataSource } from "./DataSource";
+import { Chart } from "./Chart";
 
 const companies = [
-  { name: "Nikon", percentage: "2.5%", tiles: 3, color: "#ffcc00" },
-  { name: "Canon", percentage: "3.4%", tiles: 3, color: "#cc0000" },
-  { name: "ASML", percentage: "94.1%", tiles: 94, color: "#31577f" },
+  { name: "Nikon", percentage: "2.5%", tiles: 3, color: "var(--color-amber)" },
+  { name: "Canon", percentage: "3.4%", tiles: 3, color: "var(--color-oxide)" },
+  { name: "ASML", percentage: "94.1%", tiles: 94, color: "var(--color-blue)" },
 ];
 
 const tiles = companies.flatMap(({ name, color, tiles: count }) =>
@@ -14,11 +15,11 @@ const tiles = companies.flatMap(({ name, color, tiles: count }) =>
   })),
 );
 
-export function WaffleLitography({ class: className = "" }) {
+export function WaffleLitography({ class: className = "", explainer }) {
   return (
-    <article class={`flex min-w-0 flex-col overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b] ${className}`}>
+    <Chart explainer={explainer} id="wafer-lithography" title="Wafer lithography" class={`flex min-w-0 flex-col overflow-hidden ${className}`}>
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
-        <h3 class=" text-base font-semibold">Wafer lithography market share</h3>
+        <h3 class=" text-base font-bold">Wafer lithography market share</h3>
         <p class="mt-1 text-xs text-ink-soft">
           Estimated share by equipment supplier
         </p>
@@ -49,7 +50,7 @@ export function WaffleLitography({ class: className = "" }) {
                 aria-hidden="true"
               />
               <span>{company.name}</span>
-              <strong class="font-semibold text-ink">
+              <strong class="font-bold text-ink">
                 {company.percentage}
               </strong>
             </span>
@@ -69,6 +70,6 @@ export function WaffleLitography({ class: className = "" }) {
         </a>
         .
       </DataSource>
-    </article>
+    </Chart>
   );
 }

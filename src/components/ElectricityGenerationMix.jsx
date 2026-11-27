@@ -1,4 +1,5 @@
 import { DataSource } from "./DataSource";
+import { Chart } from "./Chart";
 import { useEffect, useRef, useState } from "preact/hooks";
 import {
   axisBottom,
@@ -19,8 +20,10 @@ const regions = generationMix.regions.map(({ name, years: records }) => ({
   name,
   layers: stackShares(records),
 }));
+const panelStride = 212;
+const chartHeight = panelStride * regions.length + 8;
 
-export function ElectricityGenerationMix({ class: className = "" }) {
+export function ElectricityGenerationMix({ class: className = "", explainer }) {
   const plot = useRef(null);
   const [width, setWidth] = useState(0);
 
@@ -37,26 +40,25 @@ export function ElectricityGenerationMix({ class: className = "" }) {
 
     const svg = select(plot.current);
     const panelHeight = 164;
-    const panelStride = 204;
+    const top = 40;
     const left = 44;
     const right = width - 12;
     const plotWidth = right - left;
-    const height = panelStride * regions.length;
     const x = scaleBand(years, [left, right]).padding(0.5);
     const y = scaleLinear([0, 100], [panelHeight, 0]);
     const shareTicks = [0, 25, 50, 75, 100];
-    svg.attr("viewBox", `0 0 ${width} ${height}`).attr("height", height);
+    svg.attr("viewBox", `0 0 ${width} ${chartHeight}`);
 
     for (const [index, region] of regions.entries()) {
       const panel = svg
         .append("g")
-        .attr("transform", `translate(0,${24 + panelStride * index})`);
+        .attr("transform", `translate(0,${top + panelStride * index})`);
       panel
         .append("text")
         .attr("x", left)
-        .attr("y", -10)
+        .attr("y", -23)
         .attr("font-size", 11)
-        .attr("font-weight", 600)
+        .attr("font-weight", 700)
         .attr("fill", "currentColor")
         .text(region.name);
 
@@ -140,9 +142,9 @@ export function ElectricityGenerationMix({ class: className = "" }) {
   }, [width]);
 
   return (
-    <article class={`min-w-0 overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b] ${className}`}>
+    <Chart explainer={explainer} id="electricity-generation-mix" title="Electricity generation mix" class={`min-w-0 overflow-hidden ${className}`}>
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
-        <h3 class=" text-base font-semibold">
+        <h3 class=" text-base font-bold">
           Electricity production by source
         </h3>
         <p class="mt-1 text-xs text-ink-soft">
@@ -153,7 +155,7 @@ export function ElectricityGenerationMix({ class: className = "" }) {
         <svg
           ref={plot}
           class="block w-full"
-          height="612"
+          height={chartHeight}
           role="img"
           aria-label={`100% stacked bars by electricity source for the United States, China, and the EU in ${years.join(", ")}.`}
         />
@@ -175,6 +177,6 @@ export function ElectricityGenerationMix({ class: className = "" }) {
           Ember – Yearly Electricity Data (2026)
         </a>
       </DataSource>
-    </article>
+    </Chart>
   );
 }

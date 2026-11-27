@@ -2,39 +2,39 @@
   "sources": [
     {
       "name": "Coal",
-      "color": "#44464e"
+      "color": "var(--color-graphite)"
     },
     {
       "name": "Gas",
-      "color": "#b65333"
+      "color": "var(--color-oxide)"
     },
     {
       "name": "Other fossil",
-      "color": "#a88c76"
+      "color": "var(--color-beige)"
     },
     {
       "name": "Nuclear",
-      "color": "#85549d"
+      "color": "var(--color-machine)"
     },
     {
       "name": "Hydro",
-      "color": "#316fa8"
+      "color": "var(--color-blue)"
     },
     {
       "name": "Wind",
-      "color": "#42a6a5"
+      "color": "var(--color-phosphor)"
     },
     {
       "name": "Solar",
-      "color": "#edb837"
+      "color": "var(--color-amber)"
     },
     {
       "name": "Bioenergy",
-      "color": "#487947"
+      "color": "var(--color-olive)"
     },
     {
       "name": "Other renewables",
-      "color": "#9ab96e"
+      "color": "var(--color-steel)"
     }
   ],
   "regions": [

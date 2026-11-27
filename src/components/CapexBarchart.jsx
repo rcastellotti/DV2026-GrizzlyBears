@@ -2,8 +2,9 @@ import { DataSource } from "./DataSource";
 import { useEffect, useRef, useState } from "preact/hooks";
 import { axisBottom, axisLeft, max, scaleBand, scaleLinear, select } from "d3";
 import quarterlyCapex from "../data/quarterly-capex.json";
+import { Chart } from "./Chart";
 
-export function CapexBarchart({ class: className = "" }) {
+export function CapexBarchart({ class: className = "", explainer }) {
   const title =
     "Hyperscaler aggregate capital spending (MSFT, GOOG, AMZN, META, ORCL)";
   const description =
@@ -15,8 +16,8 @@ export function CapexBarchart({ class: className = "" }) {
   const valuePrefix = "$";
   const valueSuffix = "B";
   const highlightAfter = "2023Q1";
-  const beforeColor = "#31577f";
-  const afterColor = "#438b84";
+  const beforeColor = "var(--color-blue)";
+  const afterColor = "var(--color-phosphor)";
 
   const plotContainer = useRef(null);
   const svgRef = useRef(null);
@@ -96,7 +97,7 @@ export function CapexBarchart({ class: className = "" }) {
       .attr("x2", releaseX)
       .attr("y1", top)
       .attr("y2", baseline)
-      .attr("stroke", "#c43b3b")
+      .attr("stroke", "var(--color-graphite)")
       .attr("stroke-width", 1.5)
       .attr("stroke-dasharray", "3 4");
     releaseMarker
@@ -104,17 +105,17 @@ export function CapexBarchart({ class: className = "" }) {
       .attr("transform", `translate(${releaseX - 5},${(top + baseline) / 2}) rotate(-90)`)
       .attr("text-anchor", "middle")
       .attr("font-size", 10)
-      .attr("font-weight", 600)
-      .attr("fill", "#c43b3b")
+      .attr("font-weight", 700)
+      .attr("fill", "var(--color-ink-soft)")
       .text("ChatGPT first release");
 
     return () => svg.selectAll("*").remove();
   }, [size]);
 
   return (
-    <article class={`flex h-full min-w-0 flex-col overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b] ${className}`}>
+    <Chart explainer={explainer} id="capital-spending" title="Capital spending" class={`flex h-full min-w-0 flex-col overflow-hidden ${className}`}>
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
-        <h3 class=" text-base font-semibold">{title}</h3>
+        <h3 class=" text-base font-bold">{title}</h3>
         <p class="mt-1 text-xs text-ink-soft">{description}</p>
       </header>
 
@@ -148,6 +149,6 @@ export function CapexBarchart({ class: className = "" }) {
       </figure>
 
       <DataSource>{source}</DataSource>
-    </article>
+    </Chart>
   );
 }

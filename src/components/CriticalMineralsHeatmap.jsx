@@ -1,31 +1,29 @@
-import { interpolateBlues, scaleSequential } from "d3";
 import { DataSource } from "./DataSource";
 import minerals from "../data/critical-minerals-2025.json";
+import { Chart } from "./Chart";
 
-const shareColor = scaleSequential([0, 100], interpolateBlues);
 const stages = [
   { key: "mining", label: "Mining" },
   { key: "refining", label: "Refining" },
 ];
-const legendStops = [0, 25, 50, 75, 100];
 
-export function CriticalMineralsHeatmap({ class: className = "" }) {
+export function CriticalMineralsHeatmap({ class: className = "", explainer }) {
   return (
-    <article class={`flex h-full min-w-0 flex-col overflow-hidden rounded-[5px] border border-[#c5ccd5] bg-white shadow-[0_2px_4px_#233d610b] ${className}`}>
+    <Chart explainer={explainer} id="critical-minerals" title="Critical minerals" class={`flex h-full min-w-0 flex-col overflow-hidden ${className}`}>
       <header class="px-4 pt-4 sm:px-6 sm:pt-6">
-        <h3 class=" text-base font-semibold">Critical minerals production</h3>
+        <h3 class=" text-base font-bold">Critical minerals production</h3>
         <p class="mt-1 text-xs text-ink-soft">
           Leading country or region by share of global production, 2025.
         </p>
       </header>
       <figure class="flex flex-1 flex-col px-3 py-4 sm:px-5">
         <table
-          class="w-full table-fixed border-separate border-spacing-1 text-xs"
+          class="mx-auto w-[min(100%,calc(66.667%+7rem))] table-fixed border-separate border-spacing-1 text-xs"
           aria-label="Leading critical mineral producers in 2025"
         >
           <thead>
             <tr>
-              <th scope="col" class="px-1 pb-1 text-left">
+              <th scope="col" class="w-[min(28%,7rem)] px-1 pb-1 text-center">
                 Mineral
               </th>
               {stages.map(({ key, label }) => (
@@ -38,7 +36,7 @@ export function CriticalMineralsHeatmap({ class: className = "" }) {
           <tbody>
             {minerals.map(({ mineral, ...production }) => (
               <tr key={mineral}>
-                <th scope="row" class="px-1 text-left font-semibold">
+                <th scope="row" class="px-1 text-center font-bold">
                   {mineral}
                 </th>
                 {stages.map(({ key }) => {
@@ -48,8 +46,8 @@ export function CriticalMineralsHeatmap({ class: className = "" }) {
                       key={key}
                       class="rounded-xs px-1 py-1.5 text-center"
                       style={{
-                        backgroundColor: shareColor(share),
-                        color: share >= 65 ? "white" : "#14283b",
+                        backgroundColor: `color-mix(in oklab, var(--color-amber) ${share}%, var(--color-silver))`,
+                        color: "var(--color-ink)",
                       }}
                     >
                       <span
@@ -74,7 +72,7 @@ export function CriticalMineralsHeatmap({ class: className = "" }) {
             class="h-2 rounded-xs"
             aria-hidden="true"
             style={{
-              background: `linear-gradient(to right, ${legendStops.map((share) => shareColor(share)).join(", ")})`,
+              background: "linear-gradient(to right in oklab, var(--color-silver), var(--color-amber))",
             }}
           />
           <div class="mt-1 flex justify-between tabular-nums">
@@ -89,6 +87,6 @@ export function CriticalMineralsHeatmap({ class: className = "" }) {
           IEA – Global Critical Minerals Outlook 2026
         </a>
       </DataSource>
-    </article>
+    </Chart>
   );
 }
