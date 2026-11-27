@@ -3,8 +3,30 @@
 /* Limit Tailwind scanning to app sources. */
 @source "./**/*.{js,jsx}";
 
+@font-face {
+  font-family: "Helix Mono";
+  src: url("/fonts/helix-mono/HelixMono-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Helix Mono";
+  src: url("/fonts/helix-mono/HelixMono-Medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Helix Mono";
+  src: url("/fonts/helix-mono/HelixMono-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
 @theme static {
-  --font-sans: "Overpass", system-ui, sans-serif;
+  --font-sans: "Helix Mono", ui-monospace, monospace;
   --color-silver: #d8d8d0;
   --color-machine: #a6a6a0;
   --color-steel: #858580;
@@ -16,7 +38,7 @@
   --color-amber: #cda959;
   --color-oxide: #ba746b;
   --color-paper: var(--color-silver);
-  --color-desk: var(--color-machine);
+  --color-desk: #f4f3ef;
   --color-ink: #181818;
   --color-ink-soft: #292927;
   --color-ink-faint: #363633;
@@ -28,7 +50,7 @@
     margin: 0;
     color: var(--color-ink);
     background-color: var(--color-desk);
-    background-image: radial-gradient(var(--color-steel) 0.65px, transparent 0.65px);
+    background-image: radial-gradient(#c9c8c2 0.65px, transparent 0.65px);
     background-size: 5px 5px;
     font-family: var(--font-sans);
     font-size: 1rem;
