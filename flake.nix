@@ -23,6 +23,7 @@
         {
           default = pkgs.mkShell {
             packages = [
+              pkgs.git
               pkgs.bun
               pkgs.typst
               pkgs.cm_unicode
@@ -38,6 +39,9 @@
             TYPST_FONT_PATHS = "${pkgs.cm_unicode}/share/fonts";
             shellHook = ''
               echo "yoooo grizzly fkn bears!!!  ʕ•ᴥ•ʔ"
+              if [[ $- == *i* ]]; then
+                exec fish
+              fi
             '';
           };
         }
